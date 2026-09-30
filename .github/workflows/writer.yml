@@ -1,0 +1,111 @@
+name: Library Writer - Restricted
+
+on:
+workflow_dispatch:
+inputs:
+file_path:
+description: "Repo-relative path, e.g. index.html"
+required: true
+type: string
+content_base64:
+description: "File contents encoded as base64"
+required: true
+type: string
+commit_message:
+description: "Commit message"
+required: false
+default: "update: via library writer"
+type: string
+
+concurrency:
+group: library-writer
+cancel-in-progress: false
+
+jobs:
+write:
+runs-on: ubuntu-latest
+timeout-minutes: 5
+permissions:
+contents: write
+
+steps:  
+  - name: Checkout  
+    uses: actions/checkout@v4  
+
+  - name: Validate path  
+    env:  
+      FILE_PATH: ${{ inputs.file_path }}  
+    run: |  
+      set -euo pipefail  
+
+      python - <<'PY'  
+      import os  
+      from pathlib import PurePosixPath  
+
+      raw = os.environ["FILE_PATH"].strip()  
+
+      if not raw:  
+          raise SystemExit("❌ file_path kosong")  
+      if "\\" in raw:  
+          raise SystemExit("❌ Backslash tidak diizinkan")  
+      if raw.startswith("/"):  
+          raise SystemExit("❌ Absolute path tidak diizinkan")  
+
+      p = PurePosixPath(raw)  
+
+      if ".." in p.parts:  
+          raise SystemExit("❌ Path traversal '..' tidak diizinkan")  
+      if ".git" in p.parts:  
+          raise SystemExit("❌ Folder .git tidak boleh ditulis")  
+      if len(p.parts) >= 2 and p.parts[0] == ".github" and p.parts[1] == "workflows":  
+          raise SystemExit("❌ Folder .github/workflows tidak boleh ditulis")  
+
+      allowed = {  
+          ".html", ".css", ".js", ".json", ".md", ".txt",  
+          ".png", ".jpg", ".jpeg", ".webp", ".svg"  
+      }  
+      if p.suffix.lower() not in allowed:  
+          raise SystemExit(f"❌ Ekstensi tidak diizinkan: {p.suffix}")  
+
+      print(f"✅ Path aman: {raw}")  
+      PY  
+
+  - name: Write file  
+    env:  
+      FILE_PATH: ${{ inputs.file_path }}  
+      CONTENT_BASE64: ${{ inputs.content_base64 }}  
+    run: |  
+      set -euo pipefail  
+
+      if [ "${#CONTENT_BASE64}" -gt 60000 ]; then  
+        echo "❌ Payload terlalu besar untuk workflow_dispatch."  
+        echo "Gunakan file kecil; batas payload input GitHub adalah 65,535 karakter."  
+        exit 1  
+      fi  
+
+      mkdir -p "$(dirname -- "$FILE_PATH")"  
+      printf '%s' "$CONTENT_BASE64" | base64 --decode > "$FILE_PATH"  
+
+      test -f "$FILE_PATH"  
+      echo "✅ File berhasil ditulis: $FILE_PATH"  
+      ls -lh -- "$FILE_PATH"  
+
+  - name: Commit and push  
+    env:  
+      FILE_PATH: ${{ inputs.file_path }}  
+      COMMIT_MESSAGE: ${{ inputs.commit_message }}  
+    run: |  
+      set -euo pipefail  
+
+      git config user.name "library-bot"  
+      git config user.email "41898282+github-actions[bot]@users.noreply.github.com"  
+
+      git add -- "$FILE_PATH"  
+
+      if git diff --cached --quiet; then  
+        echo "ℹ️ Tidak ada perubahan."  
+        exit 0  
+      fi  
+
+      git commit -m "$COMMIT_MESSAGE"  
+      git push
