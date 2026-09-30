@@ -126,11 +126,10 @@
     .chapter-content p {
       margin-bottom: 12px;
       text-align: left;
-      text-indent: 1.5em;
     }
-    
-    .chapter-content p:first-of-type {
-      text-indent: 0;
+
+    .chapter-content p:not(:first-child) {
+      text-indent: 1.5em;
     }
     
     .chapter-content p:last-child {
