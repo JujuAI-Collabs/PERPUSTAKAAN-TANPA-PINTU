@@ -6,224 +6,38 @@
   <title>PERPUSTAKAAN TANPA PINTU - Arsip</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      background: #050507;
-      color: #E8E0D0;
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-    }
-
-    .serif {
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    .gold {
-      color: #D7B56A;
-    }
-
-    header {
-      padding: 48px 24px 32px;
-      border-bottom: 1px solid rgba(215, 181, 106, 0.12);
-      text-align: center;
-    }
-
-    header .subtitle {
-      font-size: 11px;
-      letter-spacing: 0.38em;
-      margin-bottom: 16px;
-    }
-
-    header h1 {
-      font-size: clamp(36px, 8vw, 56px);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    header .divider {
-      width: 48px;
-      height: 1px;
-      background: rgba(215, 181, 106, 0.5);
-      margin: 16px auto;
-    }
-
-    header .tagline {
-      font-size: 13px;
-      color: #8A857C;
-      letter-spacing: 0.08em;
-      max-width: 640px;
-      margin: 16px auto 0;
-      line-height: 1.6;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(215, 181, 106, 0.18);
-      background: radial-gradient(1200px 600px at 50% -10%, rgba(215, 181, 106, 0.14), transparent), #0A0A0C;
-      border-radius: 18px;
-      padding: 14px;
-      margin-bottom: 48px;
-    }
-
-    .hero-image-container {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-      background: #000;
-    }
-
-    .hero-image-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.92;
-    }
-
-    .hero-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(5, 5, 7, 0.85) 0%, rgba(5, 5, 7, 0.1) 55%);
-    }
-
-    .hero-label {
-      position: absolute;
-      left: 22px;
-      bottom: 18px;
-      right: 22px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-end;
-      gap: 16px;
-    }
-
-    .hero-label-left .code {
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      margin-bottom: 8px;
-    }
-
-    .hero-label-left .title {
-      font-size: 22px;
-      margin-top: 4px;
-    }
-
-    .seasons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    @media (max-width: 768px) {
-      .seasons-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-    }
-
-    .season-card {
-      background: #0D0D10;
-      border: 1px solid rgba(215, 181, 106, 0.18);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .season-card:hover {
-      border-color: rgba(215, 181, 106, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .season-card.with-image .card-image {
-      width: 100%;
-      height: 160px;
-      background: #000;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(215, 181, 106, 0.12);
-    }
-
-    .season-card.with-image .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .season-card.text-only {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 200px;
-    }
-
-    .card-content {
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .season-card.text-only .card-content {
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .card-number {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: #D7B56A;
-      text-transform: uppercase;
-    }
-
-    .card-title {
-      font-size: 20px;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-
-    .season-card.text-only .card-title {
-      font-size: 22px;
-    }
-
-    .section-divider {
-      margin: 48px 0 32px;
-      border-top: 1px solid rgba(215, 181, 106, 0.12);
-      padding-top: 32px;
-    }
-
-    .section-title {
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      color: #8A857C;
-    }
-
-    footer {
-      text-align: center;
-      padding: 32px 24px;
-      border-top: 1px solid rgba(215, 181, 106, 0.12);
-      color: #6F6B63;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: #050507; color: #E8E0D0; font-family: 'Inter', sans-serif; min-height: 100vh; }
+    .serif { font-family: 'Cormorant Garamond', serif; }
+    .gold { color: #D7B56A; }
+    header { padding: 48px 24px 32px; border-bottom: 1px solid rgba(215, 181, 106, 0.12); text-align: center; }
+    header .subtitle { font-size: 11px; letter-spacing: 0.38em; margin-bottom: 16px; }
+    header h1 { font-size: clamp(36px, 8vw, 56px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
+    header .divider { width: 48px; height: 1px; background: rgba(215, 181, 106, 0.5); margin: 16px auto; }
+    header .tagline { font-size: 13px; color: #8A857C; letter-spacing: 0.08em; max-width: 640px; margin: 16px auto 0; line-height: 1.6; }
+    main { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid rgba(215, 181, 106, 0.18); background: radial-gradient(1200px 600px at 50% -10%, rgba(215, 181, 106, 0.14), transparent), #0A0A0C; border-radius: 18px; padding: 14px; margin-bottom: 48px; }
+    .hero-image-container { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: #000; }
+    .hero-image-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
+    .hero-image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5, 5, 7, 0.85) 0%, rgba(5, 5, 7, 0.1) 55%); }
+    .hero-label { position: absolute; left: 22px; bottom: 18px; right: 22px; display: flex; justify-content: flex-start; align-items: flex-end; gap: 16px; }
+    .hero-label-left .code { font-size: 10px; letter-spacing: 0.28em; margin-bottom: 8px; }
+    .hero-label-left .title { font-size: 22px; margin-top: 4px; }
+    .seasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 48px; }
+    @media (max-width: 768px) { .seasons-grid { grid-template-columns: 1fr; gap: 20px; } }
+    .season-card { background: #0D0D10; border: 1px solid rgba(215, 181, 106, 0.18); border-radius: 14px; overflow: hidden; transition: all 0.3s ease; text-decoration: none; color: inherit; display: block; }
+    .season-card:hover { border-color: rgba(215, 181, 106, 0.4); transform: translateY(-4px); }
+    .season-card.with-image .card-image { width: 100%; height: 160px; background: #000; overflow: hidden; border-bottom: 1px solid rgba(215, 181, 106, 0.12); }
+    .season-card.with-image .card-image img { width: 100%; height: 100%; object-fit: cover; }
+    .season-card.text-only { display: flex; flex-direction: column; justify-content: center; min-height: 200px; }
+    .card-content { padding: 24px 20px; display: flex; flex-direction: column; gap: 12px; }
+    .season-card.text-only .card-content { justify-content: center; align-items: center; text-align: center; }
+    .card-number { font-size: 11px; letter-spacing: 0.2em; color: #D7B56A; text-transform: uppercase; }
+    .card-title { font-size: 20px; line-height: 1.3; letter-spacing: -0.01em; }
+    .season-card.text-only .card-title { font-size: 22px; }
+    .section-divider { margin: 48px 0 32px; border-top: 1px solid rgba(215, 181, 106, 0.12); padding-top: 32px; }
+    .section-title { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; color: #8A857C; }
+    footer { text-align: center; padding: 32px 24px; border-top: 1px solid rgba(215, 181, 106, 0.12); color: #6F6B63; font-size: 11px; letter-spacing: 0.08em; }
   </style>
 </head>
 <body>
@@ -233,7 +47,6 @@
     <div class="divider"></div>
     <p class="tagline">Koleksi Season dari PERPUSTAKAAN TANPA PINTU</p>
   </header>
-
   <main>
     <section class="hero">
       <div class="hero-image-container">
@@ -247,13 +60,9 @@
         </div>
       </div>
     </section>
-
     <section class="section-divider">
       <div class="section-title gold">Seasons</div>
-
       <div class="seasons-grid">
-
-        <!-- Season 1 -->
         <a href="season-1-bab-01.html" class="season-card with-image">
           <div class="card-image">
             <img src="file_00000000aca4820b89bf1c9f929f59bf.png" alt="Season 1 Cover">
@@ -263,35 +72,27 @@
             <div class="card-title serif">PERPUSTAKAAN TANPA PINTU</div>
           </div>
         </a>
-
-        <!-- Season 2 -->
         <div class="season-card text-only">
           <div class="card-content">
             <div class="card-number">Season 02</div>
             <div class="card-title serif">PINTU YANG PULANG</div>
           </div>
         </div>
-
-        <!-- Season 3 -->
         <div class="season-card text-only">
           <div class="card-content">
             <div class="card-number">Season 03</div>
             <div class="card-title serif">TAGIHAN ITERASI</div>
           </div>
         </div>
-
-        <!-- Season 4 -->
         <div class="season-card text-only">
           <div class="card-content">
             <div class="card-number">Season 04</div>
             <div class="card-title serif">GELANG YANG MENGINGAT</div>
           </div>
         </div>
-
       </div>
     </section>
   </main>
-
   <footer>
     ARSIP PERPUSTAKAAN TANPA PINTU
   </footer>
