@@ -24,35 +24,43 @@
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pintu Pertama Yang Hilang - PERPUSTAKAAN TANPA PINTU</title>
+<title>PERPUSTAKAAN TANPA PINTU - Arsip Final</title>
 <style>
-body{margin:0;background:#0d0d0f;color:#e8e6e3;font-family:Georgia,serif;line-height:1.8}
-.nav{max-width:800px;margin:0 auto;padding:16px 20px;display:flex;justify-content:space-between}
-.nav a{color:#f5c16c;text-decoration:none;border:1px solid #2a2a30;padding:8px 14px;border-radius:8px;background:#17171c}
-article{max-width:720px;margin:20px auto;padding:20px;background:#17171c;border-radius:16px;border:1px solid #2a2a30}
-h1{color:#f5c16c;letter-spacing:1px}
-p{text-align:justify}
-.cover-mini{text-align:center;margin-bottom:18px}
-.cover-mini img{max-width:280px;width:100%;border-radius:12px;border:1px solid #2a2a30}
+:root{--bg:#0c0c10;--card:#18181e;--card2:#21212a;--accent:#f5c16c;--accent2:#7dd3ff;--text:#e8e6e3;--muted:#9a9a9e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7;overflow-x:hidden}
+header{text-align:center;padding:56px 20px 12px}
+header h1{font-size:2.15rem;letter-spacing:3px;margin:0;color:var(--accent)}
+header p{color:var(--muted);margin:6px 0 0;font-size:.9rem}
+.cover{max-width:380px;margin:22px auto;border-radius:18px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.6),0 0 0 1px #2a2a30}
+.cover img{width:100%;display:block;aspect-ratio:3/4.6;object-fit:cover;background:#15151a}
+.container{max-width:860px;margin:0 auto;padding:16px 20px 40px}
+.main-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 28px}
+.nav-card{display:block;padding:18px;border-radius:14px;text-decoration:none;border:1px solid #262630;background:var(--card)}
+.nav-card h3{margin:0 0 4px;color:var(--accent);font-size:1.05rem}
+.nav-card p{margin:0;color:var(--muted);font-size:.88rem}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem}
 </style>
 </head>
 <body>
-<div class="nav">
-<a href="index.html">← Arsip</a>
-<a href="season-1-bab-02.html">Next →</a>
+<header>
+<h1>PERPUSTAKAAN TANPA PINTU</h1>
+<p>Arsip Final • Cover Baru • Engine Simple Anti-Broken</p>
+<div class="cover">
+<img src="cover.jpg?v=5" alt="Perpustakaan Tanpa Pintu - Cover Final" loading="eager" onerror="this.onerror=null;this.src='cover-perpustakaan-tanpa-pintu.jpg?v=5';">
 </div>
-<article>
-<div class="cover-mini"><img src="cover.jpg?v=5" onerror="this.src='cover-perpustakaan-tanpa-pintu.jpg?v=5'" alt="cover"></div>
-<h1>Bab 01 - Pintu Pertama Yang Hilang</h1>
-<p>Fina berdiri di depan rak yang tidak memiliki ujung. Di perpustakaan ini, pintu masuk dan pintu keluar adalah hal yang sama - sebuah ide, bukan benda. Setiap buku yang ia tarik, lorong di belakangnya berubah.</p>
-<p>Di buku harian penjaga sebelumnya tertulis: "Jangan pernah menamai file dengan file_000...png, karena arwah perpustakaan tidak bisa membacanya." Fina baru mengerti setelah 11 jam.</p>
-<p>"Kalau begitu, kita harus memberi peta," gumamnya. Ia mulai menata ulang: 01, 02, 03. Bukan 1, 2, 3. Karena perpustakaan ini kaku seperti GitHub Pages - butuh dua digit untuk mengenali urutan.</p>
-<p>Serigala putih di sampul itu menatapnya. Bukan mengancam, tapi menunggu. Menunggu Fina selesai membangun sistem arsip yang tidak akan loncat lagi.</p>
-<p><em>[Isi cerita asli Bab 01 kamu paste di sini. Pastikan tidak ada tag &lt;p&gt; atau &lt;/div&gt; yang hilang biar tidak kepotong.]</em></p>
-</article>
-<div class="nav">
-<a href="index.html">← Prev</a>
-<a href="index.html">Arsip</a>
+<p style="color:var(--muted);font-size:.8rem">Jika masih broken, hard refresh: tahan icon refresh atau hapus cache Brave</p>
+</header>
+<div class="container">
+<div class="main-nav">
+<a href="arsip-visual.html" class="nav-card"><h3>🖼️ ARSIP VISUAL</h3><p>Galeri foto full per Season</p></a>
+<a href="#seasons" class="nav-card"><h3>📖 SEASONS</h3><p>Baca cerita Bab 01-03</p></a>
 </div>
+<div id="seasons">
+<h2>SEASONS</h2>
+<p>Bab 01-03 ready</p>
+</div>
+</div>
+<footer>INDEX SIMPLE v5 • 1 file cover.jpg doang • Anti pusing HP © 2026</footer>
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
