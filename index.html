@@ -1,95 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
 <head><style>
-@font-face {
-  font-family: "Optimistic";
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Optimistic Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
-}
-:where(html) {
-  font-family: "Optimistic", system-ui, sans-serif;
-}
-:where(code, pre, kbd, samp) {
-  font-family: "Optimistic Mono", ui-monospace, monospace;
-}
+@font-face{font-family:"Optimistic";font-style:normal;font-weight:400 600;font-display:swap;src:url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2")}
+@font-face{font-family:"Optimistic Mono";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2")}
+:where(html){font-family:"Optimistic",system-ui,sans-serif}
+:where(code,pre,kbd,samp){font-family:"Optimistic Mono",ui-monospace,monospace}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PERPUSTAKAAN TANPA PINTU - Season 2 PINTU YANG PULANG</title>
 <style>
 :root{--bg:#0c0c10;--card:#18181e;--card2:#21212a;--accent:#f5c16c;--text:#e8e6e3;--muted:#9a9a9e}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 25% 25%, rgba(245,193,108,.13) 0%, transparent 50%), radial-gradient(ellipse at 75% 75%, rgba(125,211,255,.11) 0%, transparent 50%);animation:bgFloat 14s ease-in-out infinite alternate}
-@keyframes bgFloat{0%{transform:scale(1)}100%{transform:scale(1.12)}}
-header{text-align:center;padding:36px 20px 10px} header h1{font-size:2.2rem;letter-spacing:3px;margin:0;color:var(--accent)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-12%;z-index:-2;background:radial-gradient(ellipse at 25% 25%,rgba(245,193,108,.13) 0%,transparent 50%),radial-gradient(ellipse at 75% 75%,rgba(125,211,255,.11) 0%,transparent 50%);animation:bgFloat 16s ease-in-out infinite alternate}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.025) 45%,transparent 55%);transform:translateX(-110%);animation:lightSweep 12s ease-in-out infinite}
+@keyframes bgFloat{0%{transform:scale(1) translate3d(0,0,0)}100%{transform:scale(1.12) translate3d(1%,-1%,0)}}
+@keyframes lightSweep{0%,55%{transform:translateX(-110%)}75%,100%{transform:translateX(110%)}}
+header{text-align:center;padding:36px 20px 10px;animation:headerIn .9s ease-out both}
+@keyframes headerIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+header h1{font-size:2.2rem;letter-spacing:3px;margin:0;color:var(--accent);animation:titlePulse 5s ease-in-out infinite}
+@keyframes titlePulse{0%,100%{text-shadow:0 0 0 rgba(245,193,108,0)}50%{text-shadow:0 0 18px rgba(245,193,108,.18)}}
 .container{max-width:920px;margin:0 auto;padding:14px 20px 40px}
 .nav-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:11px;margin:16px 0 26px}
-.nav-card{display:block;padding:15px;border-radius:13px;text-decoration:none;border:1px solid #262630;background:var(--card)}
-.nav-card h3{margin:0 0 3px;color:var(--accent);font-size:.96rem} .nav-card p{margin:0;color:var(--muted);font-size:.80rem}
-.season{margin:28px 0;padding:18px;border-radius:14px;background:var(--card);border:1px solid #262630}
-.season h2{margin:0 0 4px;color:var(--accent);font-size:1.15rem} .season .desc{color:var(--muted);font-size:.84rem;margin:0 0 12px}
+.nav-card{display:block;padding:15px;border-radius:13px;text-decoration:none;border:1px solid #262630;background:var(--card);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.nav-card:hover{transform:translateY(-4px);box-shadow:0 9px 24px rgba(0,0,0,.28);border-color:rgba(245,193,108,.38)}
+.nav-card h3{margin:0 0 3px;color:var(--accent);font-size:.96rem}.nav-card p{margin:0;color:var(--muted);font-size:.80rem}
+.season{margin:28px 0;padding:18px;border-radius:14px;background:var(--card);border:1px solid #262630;animation:seasonIn .7s ease-out both;position:relative;overflow:hidden}
+.season::after{content:"";position:absolute;top:0;left:-35%;width:25%;height:1px;background:rgba(245,193,108,.55);animation:seasonGlint 8s ease-in-out infinite}
+@keyframes seasonIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes seasonGlint{0%,70%{left:-35%;opacity:0}80%{opacity:1}100%{left:120%;opacity:0}}
+.season h2{margin:0 0 4px;color:var(--accent);font-size:1.15rem}.season .desc{color:var(--muted);font-size:.84rem;margin:0 0 12px}
 .bab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px}
-.bab{display:block;padding:11px 12px;border-radius:9px;background:var(--card2);border:1px solid #2a2a3a;text-decoration:none;color:var(--text);font-size:.86rem}
-.bab.active{border-color:var(--accent)} .bab.coming{opacity:.48;pointer-events:none}
+.bab{display:block;padding:11px 12px;border-radius:9px;background:var(--card2);border:1px solid #2a2a3a;text-decoration:none;color:var(--text);font-size:.86rem;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.bab:hover{transform:translateX(4px);border-color:rgba(245,193,108,.42);background:#25252f}
+.bab.active{border-color:var(--accent)}.bab.coming{opacity:.48;pointer-events:none}
 .bab .tag{font-size:.68rem;color:var(--muted);display:block;margin-top:2px}
 footer{text-align:center;padding:28px;color:var(--muted);font-size:.78rem}
+@media(max-width:600px){header{padding-top:28px}header h1{font-size:1.65rem;letter-spacing:2px}.container{padding-left:14px;padding-right:14px}.season{margin:20px 0;padding:15px}.nav-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <header>
 <h1>PERPUSTAKAAN TANPA PINTU</h1>
 <p>System 100% data.json • Season 2: PINTU YANG PULANG • No hardcode</p>
-<div style="text-align:center; padding:10px 0 16px;">
-<a href="arsip-visual.html" style="display:inline-block; color:#f5c16c; border:1px solid rgba(245,193,108,.35); padding:8px 16px; border-radius:10px; text-decoration:none; background:#18181e; font-size:.85rem;">🖼️ Arsip Visual →</a>
-</div>
+<div style="text-align:center;padding:10px 0 16px"><a href="arsip-visual.html" style="display:inline-block;color:#f5c16c;border:1px solid rgba(245,193,108,.35);padding:8px 16px;border-radius:10px;text-decoration:none;background:#18181e;font-size:.85rem">🖼️ Arsip Visual →</a></div>
 </header>
-<div class="container">
-<div class="nav-grid" id="navgrid"></div>
-<div id="seasons"><div style="text-align:center;color:#f5c16c;padding:20px">Memuat dari data.json...</div></div>
-</div>
+<div class="container"><div class="nav-grid" id="navgrid"></div><div id="seasons"><div style="text-align:center;color:#f5c16c;padding:20px">Memuat dari data.json...</div></div></div>
 <footer id="foot">© 2026 - 100% dari data.json</footer>
 <script>
-const FALLBACK = {"project": "PERPUSTAKAAN TANPA PINTU", "seasons": [{"id": 1, "title": "Sebelum Semuanya Terulang", "desc": "Iterasi 4.129.804 - penjaga mulut dijahit", "visible": true, "babs": [{"no": "01", "slug": "season-1-bab-01", "judul": "Yang Tak Seharusnya Terucap", "status": "ready"}, {"no": "02", "slug": "season-1-bab-02", "judul": "Yang Tiada Ujung", "status": "ready"}, {"no": "03", "slug": "season-1-bab-03", "judul": "Hari Ini, Sekarang, Baru Saja", "status": "ready"}], "editable_by": "Fina"}, {"id": 2, "title": "PINTU YANG PULANG", "desc": "Bab 01-09 dari data.json - semua dibaca live", "visible": true, "babs": [{"no": "01", "slug": "season-2-bab-01", "judul": "Yang Tak Seharusnya Terucap", "status": "ready"}, {"no": "02", "slug": "season-2-bab-02", "judul": "Yang Tiada Ujung", "status": "ready"}, {"no": "03", "slug": "season-2-bab-03", "judul": "Hari Ini, Sekarang, Baru Saja", "status": "ready"}, {"no": "04", "slug": "season-2-bab-04", "judul": "Serigala Penjaga", "status": "coming"}, {"no": "05", "slug": "season-2-bab-05", "judul": "Kertas Melayang", "status": "coming"}, {"no": "06", "slug": "season-2-bab-06", "judul": "Halo Ratu", "status": "coming"}, {"no": "07", "slug": "season-2-bab-07", "judul": "Takhta Kertas", "status": "coming"}, {"no": "08", "slug": "season-2-bab-08", "judul": "Debu Emas", "status": "coming"}, {"no": "09", "slug": "season-2-bab-09", "judul": "Pintu Terakhir", "status": "coming"}], "editable_by": "Fina"}, {"id": 3, "title": "Ratu Perpustakaan", "visible": true, "babs": [{"no": "10", "judul": "Perpustakaan Tanpa Pintu", "status": "coming"}, {"no": "11", "judul": "Epilog", "status": "coming"}, {"no": "12", "judul": "End Credit", "status": "coming"}], "editable_by": "Fina"}]};
-function render(data, src){
-  const container=document.getElementById('seasons');
-  const nav=document.getElementById('navgrid');
-  container.innerHTML=''; nav.innerHTML='';
-  // filter hanya visible != false
-  const visibleSeasons = data.seasons.filter(s=>s.visible!==false);
-  visibleSeasons.forEach(s=>{
-    let grid=''; s.babs.forEach(b=>{
-      const st=b.status||'coming'; const cls=st==='ready'?'bab active':'bab coming';
-      const slug=b.slug||`season-${s.id}-bab-${b.no}`; const tag=b.img||st;
-      if(st==='ready') grid+=`<a href="${slug}.html" class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
-      else grid+=`<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
-    });
-    let desc=s.desc||''; if(s.id===1) desc=s.babs.map(b=>`Bab ${b.no}: ${b.judul}`).join(' • ');
-    container.innerHTML+=`<div class="season" id="season${s.id}"><h2>SEASON ${s.id} - ${s.title}</h2>${desc?`<p class="desc">${desc}</p>`:''}<div class="bab-grid">${grid}</div></div>`;
-    // nav
-    const readyCount = s.babs.filter(b=>b.status==='ready').length;
-    nav.innerHTML+=`<a href="#season${s.id}" class="nav-card"><h3>📖 SEASON ${s.id}</h3><p>${s.title} • ${readyCount} ready / ${s.babs.length} bab</p></a>`;
-  });
-  document.getElementById('foot').textContent=`Loaded dari ${src} • Season 4 hidden • ${visibleSeasons.length} seasons`;
-}
-async function init(){
-  try{
-    const r=await fetch('./data.json'); if(!r.ok) throw new Error(r.status);
-    const j=await r.json(); render(j,'data.json LIVE');
-  }catch(e){
-    console.log('fallback karena', e);
-    render(FALLBACK,'FALLBACK (data.json gagal)');
-  }
-}
-init();
+const FALLBACK = {"project":"PERPUSTAKAAN TANPA PINTU","seasons":[{"id":1,"title":"Sebelum Semuanya Terulang","desc":"Iterasi 4.129.804 - penjaga mulut dijahit","visible":true,"babs":[{"no":"01","slug":"season-1-bab-01","judul":"Yang Tak Seharusnya Terucap","status":"ready"},{"no":"02","slug":"season-1-bab-02","judul":"Yang Tiada Ujung","status":"ready"},{"no":"03","slug":"season-1-bab-03","judul":"Hari Ini, Sekarang, Baru Saja","status":"ready"}],"editable_by":"Fina"},{"id":2,"title":"PINTU YANG PULANG","desc":"Bab 01-09 dari data.json - semua dibaca live","visible":true,"babs":[{"no":"01","slug":"season-2-bab-01","judul":"Yang Tak Seharusnya Terucap","status":"ready"},{"no":"02","slug":"season-2-bab-02","judul":"Yang Tiada Ujung","status":"ready"},{"no":"03","slug":"season-2-bab-03","judul":"Hari Ini, Sekarang, Baru Saja","status":"ready"},{"no":"04","slug":"season-2-bab-04","judul":"Serigala Penjaga","status":"coming"},{"no":"05","slug":"season-2-bab-05","judul":"Kertas Melayang","status":"coming"},{"no":"06","slug":"season-2-bab-06","judul":"Halo Ratu","status":"coming"},{"no":"07","slug":"season-2-bab-07","judul":"Takhta Kertas","status":"coming"},{"no":"08","slug":"season-2-bab-08","judul":"Debu Emas","status":"coming"},{"no":"09","slug":"season-2-bab-09","judul":"Pintu Terakhir","status":"coming"}],"editable_by":"Fina"},{"id":3,"title":"Ratu Perpustakaan","visible":true,"babs":[{"no":"10","judul":"Perpustakaan Tanpa Pintu","status":"coming"},{"no":"11","judul":"Epilog","status":"coming"},{"no":"12","judul":"End Credit","status":"coming"}],"editable_by":"Fina"}]};
+function render(data,src){const container=document.getElementById('seasons'),nav=document.getElementById('navgrid');container.innerHTML='';nav.innerHTML='';const visibleSeasons=data.seasons.filter(s=>s.visible!==false);visibleSeasons.forEach((s,i)=>{let grid='';s.babs.forEach(b=>{const st=b.status||'coming',cls=st==='ready'?'bab active':'bab coming',slug=b.slug||`season-${s.id}-bab-${b.no}`,tag=b.img||st;if(st==='ready')grid+=`<a href="${slug}.html" class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;else grid+=`<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`});let desc=s.desc||'';if(s.id===1)desc=s.babs.map(b=>`Bab ${b.no}: ${b.judul}`).join(' • ');container.innerHTML+=`<div class="season" id="season${s.id}" style="animation-delay:${i*.08}s"><h2>SEASON ${s.id} - ${s.title}</h2>${desc?`<p class="desc">${desc}</p>`:''}<div class="bab-grid">${grid}</div></div>`;const readyCount=s.babs.filter(b=>b.status==='ready').length;nav.innerHTML+=`<a href="#season${s.id}" class="nav-card"><h3>📖 SEASON ${s.id}</h3><p>${s.title} • ${readyCount} ready / ${s.babs.length} bab</p></a>`});document.getElementById('foot').textContent=`Loaded dari ${src} • Season 4 hidden • ${visibleSeasons.length} seasons`}
+async function init(){try{const r=await fetch('./data.json');if(!r.ok)throw new Error(r.status);const j=await r.json();render(j,'data.json LIVE')}catch(e){console.log('fallback karena',e);render(FALLBACK,'FALLBACK (data.json gagal)')}}init();
 </script>
-<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</body>
 </html>
