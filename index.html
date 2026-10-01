@@ -42,66 +42,52 @@ header{text-align:center;padding:36px 20px 10px} header h1{font-size:2.2rem;lett
 .bab.active{border-color:var(--accent)} .bab.coming{opacity:.48;pointer-events:none}
 .bab .tag{font-size:.68rem;color:var(--muted);display:block;margin-top:2px}
 footer{text-align:center;padding:28px;color:var(--muted);font-size:.78rem}
-#loading{text-align:center;color:var(--accent);padding:30px}
 </style>
 </head>
 <body>
 <header>
 <h1>PERPUSTAKAAN TANPA PINTU</h1>
-<p>4 Seasons • Cover JPG 2.6MB High-Res (bukan PNG!) • Background CSS Gerak • Baca data.json</p>
+<p>4 Seasons • Cover JPG 2.6MB High-Res (bukan PNG!) • Background CSS Gerak • System data.json</p>
 <div style="text-align:center; padding:10px 0 16px;">
 <a href="arsip-visual.html" style="display:inline-block; color:#f5c16c; border:1px solid rgba(245,193,108,.35); padding:8px 16px; border-radius:10px; text-decoration:none; background:#18181e; font-size:.85rem;">🖼️ Lihat Cover & Arsip Visual (JPG) →</a>
 </div>
 </header>
 <div class="container">
 <div class="nav-grid">
-<a href="arsip-visual.html" class="nav-card"><h3>🖼️ ARSIP VISUAL</h3><p id="nav-visual">01-05 JPG enteng + cover JPG 2.6MB</p></a>
-<a href="#season1" class="nav-card"><h3>📖 SEASON 1</h3><p id="nav-s1">loading...</p></a>
-<a href="#season2" class="nav-card"><h3>📖 SEASON 2</h3><p id="nav-s2">loading...</p></a>
-<a href="#season3" class="nav-card"><h3>📖 SEASON 3</h3><p id="nav-s3">loading...</p></a>
+<a href="arsip-visual.html" class="nav-card"><h3>🖼️ ARSIP VISUAL</h3><p>01-05 JPG enteng + cover JPG 2.6MB</p></a>
+<a href="#season1" class="nav-card"><h3>📖 SEASON 1</h3><p id="nav-s1">memuat...</p></a>
+<a href="#season2" class="nav-card"><h3>📖 SEASON 2</h3><p id="nav-s2">memuat...</p></a>
+<a href="#season3" class="nav-card"><h3>📖 SEASON 3</h3><p id="nav-s3">memuat...</p></a>
 </div>
-<div id="seasons"><div id="loading">Memuat arsip dari data.json...</div></div>
+<div id="seasons"><div style="text-align:center;color:#f5c16c;padding:20px">Memuat arsip...</div></div>
 </div>
-<footer>SYSTEM: index.html membaca data.json langsung • Fina tinggal edit data.json • © 2026</footer>
-
+<footer id="foot">© 2026</footer>
 <script>
-async function loadData(){
-  try{
-    const res = await fetch('data.json?v='+Date.now());
-    const data = await res.json();
-    const container = document.getElementById('seasons');
-    container.innerHTML = '';
-    
-    data.seasons.forEach(s => {
-      let babGrid = '';
-      s.babs.forEach(b => {
-        const status = b.status || 'coming';
-        const cls = status === 'ready' ? 'bab active' : 'bab coming';
-        const slug = b.slug || `season-${s.id}-bab-${b.no}`;
-        const tag = b.img || status;
-        if(status === 'ready'){
-          babGrid += `<a href="${slug}.html" class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
-        } else {
-          babGrid += `<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
-        }
-      });
-      let desc = s.desc || '';
-      if(s.id === 1){
-        desc = s.babs.map(b => `Bab ${b.no}: ${b.judul}`).join(' • ');
-      }
-      const descHtml = desc ? `<p class="desc">${desc}</p>` : '';
-      container.innerHTML += `<div class="season" id="season${s.id}"><h2>SEASON ${s.id} - ${s.title}</h2>${descHtml}<div class="bab-grid">${babGrid}</div></div>`;
+const FALLBACK = {"project": "PERPUSTAKAAN TANPA PINTU", "seasons": [{"id": 1, "title": "Sebelum Semuanya Terulang", "desc": "Iterasi 4.129.804 - penjaga mulut dijahit", "babs": [{"no": "01", "slug": "season-1-bab-01", "judul": "Yang Tak Seharusnya Terucap", "status": "ready"}, {"no": "02", "slug": "season-1-bab-02", "judul": "Yang Tiada Ujung", "status": "ready"}, {"no": "03", "slug": "season-1-bab-03", "judul": "Hari Ini, Sekarang, Baru Saja", "status": "ready"}], "editable_by": "Fina"}, {"id": 2, "title": "Arsip Yang Hidup", "desc": "JPG semua", "babs": [{"no": "04", "slug": "season-2-bab-04", "judul": "Serigala Penjaga", "status": "coming", "img": "04.jpg"}, {"no": "05", "slug": "season-2-bab-05", "judul": "Kertas Melayang", "status": "coming", "img": "05.jpg"}, {"no": "06", "slug": "season-2-bab-06", "judul": "Halo Ratu", "status": "coming", "img": "cover.jpg 2.6MB"}], "editable_by": "Fina"}, {"id": 3, "title": "Ratu Perpustakaan", "babs": [{"no": "07", "judul": "Takhta Kertas", "status": "coming"}, {"no": "08", "judul": "Debu Emas", "status": "coming"}, {"no": "09", "judul": "Pintu Terakhir", "status": "coming"}], "editable_by": "Fina"}, {"id": 4, "title": "Final", "babs": [{"no": "10", "judul": "Perpustakaan Tanpa Pintu", "status": "coming"}, {"no": "11", "judul": "Epilog", "status": "coming"}, {"no": "12", "judul": "End Credit", "status": "coming"}], "editable_by": "Fina"}]};
+function render(data, src){
+  const c=document.getElementById('seasons'); c.innerHTML='';
+  data.seasons.forEach(s=>{
+    let g=''; s.babs.forEach(b=>{
+      const st=b.status||'coming'; const cls=st==='ready'?'bab active':'bab coming';
+      const slug=b.slug||`season-${s.id}-bab-${b.no}`; const tag=b.img||st;
+      if(st==='ready') g+=`<a href="${slug}.html" class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
+      else g+=`<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
     });
-    
-    // update nav
-    if(data.seasons[0]) document.getElementById('nav-s1').textContent = data.seasons[0].babs.filter(b=>b.status==='ready').length + ' bab ready - ' + data.seasons[0].title;
-    if(data.seasons[1]) document.getElementById('nav-s2').textContent = data.seasons[1].title + ' - ' + data.seasons[1].babs.length + ' bab soon';
-    if(data.seasons[2]) document.getElementById('nav-s3').textContent = data.seasons[2].title;
-  } catch(e){
-    document.getElementById('loading').innerHTML = 'Gagal load data.json: '+e+'<br>Cek apakah file ada di root.';
-  }
+    let desc=s.desc||''; if(s.id===1) desc=s.babs.map(b=>`Bab ${b.no}: ${b.judul}`).join(' • ');
+    c.innerHTML+=`<div class="season" id="season${s.id}"><h2>SEASON ${s.id} - ${s.title}</h2>${desc?`<p class="desc">${desc}</p>`:''}<div class="bab-grid">${g}</div></div>`;
+  });
+  if(data.seasons[0]) document.getElementById('nav-s1').textContent=data.seasons[0].babs.filter(b=>b.status==='ready').length+' bab ready - '+data.seasons[0].title;
+  if(data.seasons[1]) document.getElementById('nav-s2').textContent=data.seasons[1].title+' - '+data.seasons[1].babs.length+' bab soon';
+  if(data.seasons[2]) document.getElementById('nav-s3').textContent=data.seasons[2].title;
+  document.getElementById('foot').textContent=`Loaded dari ${src} • © 2026`;
 }
-loadData();
+async function init(){
+  try{
+    const r=await fetch('./data.json'); if(!r.ok) throw new Error(r.status);
+    const j=await r.json(); render(j,'data.json (live)');
+  }catch(e){ render(FALLBACK,'fallback (data.json gagal - cek Brave Shield)'); }
+}
+init();
 </script>
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
