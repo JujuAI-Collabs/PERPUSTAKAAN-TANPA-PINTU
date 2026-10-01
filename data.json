@@ -136,5 +136,60 @@
       ],
       "editable_by": "Fina"
     }
-  ]
+  ],
+  "gallery": {
+    "title": "ARSIP VISUAL",
+    "desc": "Koleksi visual Perpustakaan Tanpa Pintu.",
+    "images": [
+      {
+        "file": "01.jpg",
+        "label": "01.jpg - Pintu Pertama"
+      },
+      {
+        "file": "02.jpg",
+        "label": "02.jpg - Lorong"
+      },
+      {
+        "file": "03.jpg",
+        "label": "03.jpg - Rak Hitam"
+      },
+      {
+        "file": "04.jpg",
+        "label": "04.jpg - Serigala Penjaga"
+      },
+      {
+        "file": "05.jpg",
+        "label": "05.jpg - Kertas Melayang"
+      },
+      {
+        "file": "06.jpg",
+        "label": "06.jpg - Slot 06 Coming Soon",
+        "status": "coming"
+      },
+      {
+        "file": "07.jpg",
+        "label": "07.jpg - Slot 07 Coming Soon",
+        "status": "coming"
+      },
+      {
+        "file": "08.jpg",
+        "label": "08.jpg - Slot 08 Coming Soon",
+        "status": "coming"
+      },
+      {
+        "file": "09.jpg",
+        "label": "09.jpg - Slot 09 Coming Soon",
+        "status": "coming"
+      },
+      {
+        "file": "10.jpg",
+        "label": "10.jpg - Slot 10 Coming Soon",
+        "status": "coming"
+      },
+      {
+        "file": "cover.jpg",
+        "label": "cover.jpg"
+      }
+    ]
+  }
 }
