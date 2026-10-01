@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
 <head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style><style>
 @font-face{font-family:"Optimistic";font-style:normal;font-weight:400 600;font-display:swap;src:url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2")}
 @font-face{font-family:"Optimistic Mono";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2")}
 :where(html){font-family:"Optimistic",system-ui,sans-serif}
@@ -45,15 +66,40 @@ footer{text-align:center;padding:28px;color:var(--muted);font-size:.78rem}
 <body>
 <header>
 <h1>PERPUSTAKAAN TANPA PINTU</h1>
-<p>System 100% data.json • Season 2: PINTU YANG PULANG • No hardcode</p>
+<p>System 100% data.json • Season 2: PINTU YANG PULANG • Animasi by Fina ✨</p>
 <div style="text-align:center;padding:10px 0 16px"><a href="arsip-visual.html" style="display:inline-block;color:#f5c16c;border:1px solid rgba(245,193,108,.35);padding:8px 16px;border-radius:10px;text-decoration:none;background:#18181e;font-size:.85rem">🖼️ Arsip Visual →</a></div>
 </header>
 <div class="container"><div class="nav-grid" id="navgrid"></div><div id="seasons"><div style="text-align:center;color:#f5c16c;padding:20px">Memuat dari data.json...</div></div></div>
 <footer id="foot">© 2026 - 100% dari data.json</footer>
 <script>
-const FALLBACK = {"project":"PERPUSTAKAAN TANPA PINTU","seasons":[{"id":1,"title":"Sebelum Semuanya Terulang","desc":"Iterasi 4.129.804 - penjaga mulut dijahit","visible":true,"babs":[{"no":"01","slug":"season-1-bab-01","judul":"Yang Tak Seharusnya Terucap","status":"ready"},{"no":"02","slug":"season-1-bab-02","judul":"Yang Tiada Ujung","status":"ready"},{"no":"03","slug":"season-1-bab-03","judul":"Hari Ini, Sekarang, Baru Saja","status":"ready"}],"editable_by":"Fina"},{"id":2,"title":"PINTU YANG PULANG","desc":"Bab 01-09 dari data.json - semua dibaca live","visible":true,"babs":[{"no":"01","slug":"season-2-bab-01","judul":"Yang Tak Seharusnya Terucap","status":"ready"},{"no":"02","slug":"season-2-bab-02","judul":"Yang Tiada Ujung","status":"ready"},{"no":"03","slug":"season-2-bab-03","judul":"Hari Ini, Sekarang, Baru Saja","status":"ready"},{"no":"04","slug":"season-2-bab-04","judul":"Serigala Penjaga","status":"coming"},{"no":"05","slug":"season-2-bab-05","judul":"Kertas Melayang","status":"coming"},{"no":"06","slug":"season-2-bab-06","judul":"Halo Ratu","status":"coming"},{"no":"07","slug":"season-2-bab-07","judul":"Takhta Kertas","status":"coming"},{"no":"08","slug":"season-2-bab-08","judul":"Debu Emas","status":"coming"},{"no":"09","slug":"season-2-bab-09","judul":"Pintu Terakhir","status":"coming"}],"editable_by":"Fina"},{"id":3,"title":"Ratu Perpustakaan","visible":true,"babs":[{"no":"10","judul":"Perpustakaan Tanpa Pintu","status":"coming"},{"no":"11","judul":"Epilog","status":"coming"},{"no":"12","judul":"End Credit","status":"coming"}],"editable_by":"Fina"}]};
-function render(data,src){const container=document.getElementById('seasons'),nav=document.getElementById('navgrid');container.innerHTML='';nav.innerHTML='';const visibleSeasons=data.seasons.filter(s=>s.visible!==false);visibleSeasons.forEach((s,i)=>{let grid='';s.babs.forEach(b=>{const st=b.status||'coming',cls=st==='ready'?'bab active':'bab coming',slug=b.slug||`season-${s.id}-bab-${b.no}`,tag=b.img||st;if(st==='ready')grid+=`<a href="${slug}.html" class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;else grid+=`<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`});let desc=s.desc||'';if(s.id===1)desc=s.babs.map(b=>`Bab ${b.no}: ${b.judul}`).join(' • ');container.innerHTML+=`<div class="season" id="season${s.id}" style="animation-delay:${i*.08}s"><h2>SEASON ${s.id} - ${s.title}</h2>${desc?`<p class="desc">${desc}</p>`:''}<div class="bab-grid">${grid}</div></div>`;const readyCount=s.babs.filter(b=>b.status==='ready').length;nav.innerHTML+=`<a href="#season${s.id}" class="nav-card"><h3>📖 SEASON ${s.id}</h3><p>${s.title} • ${readyCount} ready / ${s.babs.length} bab</p></a>`});document.getElementById('foot').textContent=`Loaded dari ${src} • Season 4 hidden • ${visibleSeasons.length} seasons`}
-async function init(){try{const r=await fetch('./data.json');if(!r.ok)throw new Error(r.status);const j=await r.json();render(j,'data.json LIVE')}catch(e){console.log('fallback karena',e);render(FALLBACK,'FALLBACK (data.json gagal)')}}init();
+const FALLBACK = {"project": "PERPUSTAKAAN TANPA PINTU", "seasons": [{"id": 1, "title": "Sebelum Semuanya Terulang", "desc": "Season 1 — 3 Bab | Final", "visible": true, "babs": [{"no": "01", "slug": "season-1-bab-01", "judul": "Yang Tak Seharusnya Terucap", "status": "ready"}, {"no": "02", "slug": "season-1-bab-02", "judul": "Yang Tiada Ujung", "status": "ready"}, {"no": "03", "slug": "season-1-bab-03", "judul": "Hari Ini, Sekarang, Baru Saja", "status": "ready"}], "editable_by": "Fina"}, {"id": 2, "title": "Pintu Yang Pulang", "desc": "Season 2 — 9 Bab | Final", "visible": true, "babs": [{"no": "01", "slug": "season-2-bab-01", "judul": "Noda Yang Tidak Mau Tidur", "status": "ready"}, {"no": "02", "slug": "season-2-bab-02", "judul": "Penghuni Yang Lupa Nama", "status": "ready"}, {"no": "03", "slug": "season-2-bab-03", "judul": "Perpustakaan Tanpa Luar", "status": "ready"}, {"no": "04", "slug": "season-2-bab-04", "judul": "Bayangan Di Ujung Lorong", "status": "ready"}, {"no": "05", "slug": "season-2-bab-05", "judul": "Yang Ingat Nama", "status": "ready"}, {"no": "06", "slug": "season-2-bab-06", "judul": "Pasar Yang Lupa Cara Jualan", "status": "ready"}, {"no": "07", "slug": "season-2-bab-07", "judul": "Harga Sebuah Ingatan", "status": "ready"}, {"no": "08", "slug": "season-2-bab-08", "judul": "Tinta Yang Menagih Janji", "status": "ready"}, {"no": "09", "slug": "season-2-bab-09", "judul": "Jalan Pulang Yang Lupa Arah", "status": "ready"}], "editable_by": "Fina"}, {"id": 3, "title": "Tagihan Iterasi", "desc": "Season 3 — 6 Bab | Final", "visible": true, "babs": [{"no": "01", "slug": "season-3-bab-01", "judul": "Bau Tanah Dan Aroma Ibu", "status": "ready"}, {"no": "02", "slug": "season-3-bab-02", "judul": "Tamu Dari Desa Sebelah", "status": "ready"}, {"no": "03", "slug": "season-3-bab-03", "judul": "Hitungan Yang Tidak Selesai", "status": "ready"}, {"no": "04", "slug": "season-3-bab-04", "judul": "Yang Disembunyikan Ibu", "status": "ready"}, {"no": "05", "slug": "season-3-bab-05", "judul": "Yang Menagih Di Ambang Pintu", "status": "ready"}, {"no": "06", "slug": "season-3-bab-06", "judul": "Yang Menunggu Di Balik Pintu", "status": "ready"}], "editable_by": "Fina"}], "gallery": {"title": "ARSIP VISUAL", "desc": "Foto per season - tambah foto cukup edit gallery di data.json + upload file JPG", "images": [{"file": "01.jpg", "label": "01.jpg - Pintu Pertama", "season": 1}, {"file": "02.jpg", "label": "02.jpg - Lorong", "season": 1}, {"file": "03.jpg", "label": "03.jpg - Rak Hitam", "season": 1}, {"file": "04.jpg", "label": "04.jpg - Serigala Penjaga", "season": 2}, {"file": "05.jpg", "label": "05.jpg - Kertas Melayang", "season": 2}, {"file": "cover.jpg", "label": "cover.jpg 2.6MB High-Res (bukan PNG!)", "season": 0}]}};
+function render(data,src){
+  const container=document.getElementById('seasons'),nav=document.getElementById('navgrid');
+  container.innerHTML='';nav.innerHTML='';
+  const visibleSeasons=(data.seasons||[]).filter(s=>s.visible!==false);
+  visibleSeasons.forEach((s,i)=>{
+    let grid='';(s.babs||[]).forEach(b=>{
+      const st=b.status||'coming',cls=st==='ready'?'bab active':'bab coming',slug=b.slug||`season-${s.id}-bab-${b.no}`,tag=b.img||st;
+      if(st==='ready') grid+=`<a href="${slug}.html" class="cls">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
+      else grid+=`<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
+    });
+    let desc=s.desc||'';
+    container.innerHTML+=`<div class="season" id="season${s.id}" style="animation-delay:${i*.08}s"><h2>SEASON ${s.id} - ${s.title}</h2>${desc?`<p class="desc">${desc}</p>`:''}<div class="bab-grid">${grid}</div></div>`;
+    const readyCount=(s.babs||[]).filter(b=>b.status==='ready').length;
+    nav.innerHTML+=`<a href="#season${s.id}" class="nav-card"><h3>📖 SEASON ${s.id}</h3><p>${s.title} • ${readyCount} ready / ${s.babs.length} bab</p></a>`;
+  });
+  document.getElementById('foot').textContent=`Loaded dari ${src} • ${visibleSeasons.length} seasons • Foto: ${data.gallery?data.gallery.images.length:0} foto • Animasi by Fina`;
+}
+async function init(){
+  try{
+    const r=await fetch('./data.json?v='+Date.now());if(!r.ok)throw new Error(r.status);
+    const j=await r.json();render(j,'data.json LIVE');
+  }catch(e){
+    console.log('fallback karena',e);
+    render(FALLBACK,'FALLBACK (data.json gagal)');
+  }
+}
+init();
 </script>
-</body>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
