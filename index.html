@@ -24,120 +24,35 @@
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PERPUSTAKAAN TANPA PINTU - Arsip Final</title>
+<title>Pintu Pertama Yang Hilang - PERPUSTAKAAN TANPA PINTU</title>
 <style>
-:root{--bg:#0c0c10;--card:#18181e;--card2:#21212a;--accent:#f5c16c;--accent2:#7dd3ff;--text:#e8e6e3;--muted:#9a9a9e}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7;overflow-x:hidden}
-.bg-anim{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 600px 400px at 20% 30%,rgba(42,74,106,.16),transparent 70%),radial-gradient(ellipse 500px 500px at 85% 70%,rgba(70,50,90,.13),transparent 70%),#0c0c10}
-.orb{position:absolute;border-radius:50%;opacity:.2;background:radial-gradient(circle, currentColor 0%, transparent 70%);will-change:transform;animation:float 28s ease-in-out infinite}
-.orb1{width:360px;height:360px;color:#2a4a6a;left:-80px;top:6%}
-.orb2{width:420px;height:420px;color:#3a2e5a;right:-100px;top:50%;animation-duration:36s;animation-direction:reverse}
-@keyframes float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(16px,-14px,0)}}
-#particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
-.particle{position:absolute;width:2px;height:2px;background:var(--accent2);border-radius:50%;opacity:.55;animation:drift linear infinite}
-@keyframes drift{from{transform:translate3d(0,110vh,0)}to{transform:translate3d(15px,-10vh,0)}}
-header{text-align:center;padding:56px 20px 12px;position:relative;z-index:1}
-header h1{font-size:2.15rem;letter-spacing:3px;margin:0;color:var(--accent)}
-header p{color:var(--muted);margin:6px 0 0;font-size:.9rem}
-.cover{max-width:380px;margin:22px auto;border-radius:18px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.6),0 0 0 1px #2a2a30;position:relative}
-.cover img{width:100%;display:block;aspect-ratio:3/4.6;object-fit:cover}
-.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,16,.35),transparent 35%);pointer-events:none}
-.container{max-width:860px;margin:0 auto;padding:16px 20px 40px;position:relative;z-index:1}
-.main-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 28px}
-.nav-card{display:block;padding:18px;border-radius:14px;text-decoration:none;border:1px solid #262630;background:var(--card);transition:transform .15s}
-.nav-card:hover{transform:translateY(-2px);border-color:rgba(245,193,108,.35)}
-.nav-card h3{margin:0 0 4px;color:var(--accent);font-size:1.05rem}
-.nav-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.4}
-.nav-card.visual h3{color:var(--accent2)}
-.nav-card.visual{border-color:rgba(125,211,255,.18)}
-.section-title{display:flex;align-items:center;gap:10px;margin:32px 0 14px}
-.section-title h2{margin:0;font-size:1.15rem;letter-spacing:1px}
-.section-title .line{flex:1;height:1px;background:#262630}
-.badge{font-size:.7rem;padding:2px 8px;border-radius:20px;background:#21212a;color:var(--muted);border:1px solid #2a2a30}
-.visual-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-.v-card{background:var(--card);border:1px solid #262630;border-radius:12px;overflow:hidden;text-decoration:none;color:var(--text);display:block}
-.v-card .thumb{aspect-ratio:4/3;background:#15151a;position:relative;overflow:hidden}
-.v-card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.v-card .info{padding:10px 12px}
-.v-card .info b{font-size:.92rem;display:block}
-.v-card .info span{font-size:.78rem;color:var(--muted)}
-.v-card:hover{border-color:rgba(125,211,255,.35)}
-.season{background:var(--card);border:1px solid #262630;border-radius:14px;padding:18px;margin:14px 0}
-.season h3{margin:0 0 10px;font-size:1rem;color:var(--accent)}
-.bab-list{display:grid;gap:8px}
-.bab-list a{display:flex;justify-content:space-between;background:var(--card2);padding:11px 14px;border-radius:10px;text-decoration:none;color:var(--text);border:1px solid transparent}
-.bab-list a:hover{border-color:rgba(245,193,108,.25);transform:translateX(2px)}
-.bab-list small{color:var(--muted)}
-footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem}
-@media (prefers-reduced-motion:reduce){.orb,.particle{animation:none!important}}
-@media (max-width:600px){.main-nav{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.orb{opacity:.12}#particles .particle:nth-child(n+7){display:none}}
+body{margin:0;background:#0d0d0f;color:#e8e6e3;font-family:Georgia,serif;line-height:1.8}
+.nav{max-width:800px;margin:0 auto;padding:16px 20px;display:flex;justify-content:space-between}
+.nav a{color:#f5c16c;text-decoration:none;border:1px solid #2a2a30;padding:8px 14px;border-radius:8px;background:#17171c}
+article{max-width:720px;margin:20px auto;padding:20px;background:#17171c;border-radius:16px;border:1px solid #2a2a30}
+h1{color:#f5c16c;letter-spacing:1px}
+p{text-align:justify}
+.cover-mini{text-align:center;margin-bottom:18px}
+.cover-mini img{max-width:280px;width:100%;border-radius:12px;border:1px solid #2a2a30}
 </style>
 </head>
 <body>
-<div class="bg-anim" aria-hidden="true"><div class="orb orb1"></div><div class="orb orb2"></div></div>
-<div id="particles" aria-hidden="true"></div>
-<header>
-<h1>PERPUSTAKAAN TANPA PINTU</h1>
-<p>Arsip Final • Cover Baru • Engine ringan lulus audit</p>
-<div class="cover"><img src="cover-perpustakaan-tanpa-pintu-thumb.webp" srcset="cover-perpustakaan-tanpa-pintu-thumb.webp 400w, cover-perpustakaan-tanpa-pintu.jpg 1080w" sizes="(max-width: 600px) 380px, 380px" alt="Perpustakaan Tanpa Pintu - Cover Final" loading="eager" fetchpriority="high" decoding="async"></div>
-</header>
-<div class="container">
-<div class="main-nav">
-<a href="arsip-visual.html" class="nav-card visual"><h3>🖼️ ARSIP VISUAL</h3><p>Galeri foto full per Season. Cover baru ada di Galeri Season 01.</p></a>
-<a href="#seasons" class="nav-card"><h3>📖 SEASONS</h3><p>Baca cerita Bab 01-03 dst. Tanpa gambar berat.</p></a>
+<div class="nav">
+<a href="index.html">← Arsip</a>
+<a href="season-1-bab-02.html">Next →</a>
 </div>
-<div id="arsip-visual">
-<div class="section-title"><h2>🖼️ ARSIP VISUAL</h2><div class="line"></div><span class="badge">foto terpisah biar HP gak berat</span></div>
-<div class="visual-grid">
-<a class="v-card" href="galeri-season-01.html">
-<div class="thumb"><img src="cover-perpustakaan-tanpa-pintu-thumb.webp" alt="Season 01" loading="lazy" decoding="async"></div>
-<div class="info"><b>Season 01</b><span>Perpustakaan Tanpa Pintu • Cover Baru</span></div>
-</a>
-<a class="v-card" href="galeri-season-02.html">
-<div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S02</div>
-<div class="info"><b>Season 02</b><span>Pintu Yang Pulang • coming soon</span></div>
-</a>
-<a class="v-card" href="galeri-season-03.html">
-<div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S03</div>
-<div class="info"><b>Season 03</b><span>Tagihan Iterasi • coming soon</span></div>
-</a>
-<a class="v-card" href="galeri-season-04.html">
-<div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S04</div>
-<div class="info"><b>Season 04</b><span>Gelang Yang Mengingat • coming soon</span></div>
-</a>
+<article>
+<div class="cover-mini"><img src="cover.jpg?v=5" onerror="this.src='cover-perpustakaan-tanpa-pintu.jpg?v=5'" alt="cover"></div>
+<h1>Bab 01 - Pintu Pertama Yang Hilang</h1>
+<p>Fina berdiri di depan rak yang tidak memiliki ujung. Di perpustakaan ini, pintu masuk dan pintu keluar adalah hal yang sama - sebuah ide, bukan benda. Setiap buku yang ia tarik, lorong di belakangnya berubah.</p>
+<p>Di buku harian penjaga sebelumnya tertulis: "Jangan pernah menamai file dengan file_000...png, karena arwah perpustakaan tidak bisa membacanya." Fina baru mengerti setelah 11 jam.</p>
+<p>"Kalau begitu, kita harus memberi peta," gumamnya. Ia mulai menata ulang: 01, 02, 03. Bukan 1, 2, 3. Karena perpustakaan ini kaku seperti GitHub Pages - butuh dua digit untuk mengenali urutan.</p>
+<p>Serigala putih di sampul itu menatapnya. Bukan mengancam, tapi menunggu. Menunggu Fina selesai membangun sistem arsip yang tidak akan loncat lagi.</p>
+<p><em>[Isi cerita asli Bab 01 kamu paste di sini. Pastikan tidak ada tag &lt;p&gt; atau &lt;/div&gt; yang hilang biar tidak kepotong.]</em></p>
+</article>
+<div class="nav">
+<a href="index.html">← Prev</a>
+<a href="index.html">Arsip</a>
 </div>
-<p style="color:var(--muted);font-size:.85rem;margin-top:10px">* Foto per season beda file. Index cuma thumbnail 1 gambar, sisanya load di halaman galeri-nya masing-masing.</p>
-</div>
-<div id="seasons">
-<div class="section-title"><h2>📖 SEASONS</h2><div class="line"></div><span class="badge">baca doang, tanpa galeri berat</span></div>
-<div class="season"><h3>SEASON 01 - PERPUSTAKAAN TANPA PINTU</h3>
-<div class="bab-list">
-<a href="season-1-bab-01.html"><span>Bab 01 - Pintu Pertama Yang Hilang</span><small>01</small></a>
-<a href="season-1-bab-02.html"><span>Bab 02 - Lorong Tanpa Akhir</span><small>02</small></a>
-<a href="season-1-bab-03.html"><span>Bab 03 - Angka Yang Terhapus</span><small>03</small></a>
-</div></div>
-<div class="season"><h3>SEASON 02 - PINTU YANG PULANG</h3><div class="bab-list"><a href="#"><span>Coming Soon</span><small>--</small></a></div></div>
-<div class="season"><h3>SEASON 03 - TAGIHAN ITERASI</h3><div class="bab-list"><a href="#"><span>Coming Soon</span><small>--</small></a></div></div>
-<div class="season"><h3>SEASON 04 - GELANG YANG MENGINGAT</h3><div class="bab-list"><a href="#"><span>Coming Soon</span><small>--</small></a></div></div>
-</div>
-</div>
-<footer>INDEX FINAL • Cover Baru • engine lulus • foto terpisah biar HP Juju aman © 2026</footer>
-<script>
-(function(){
-  if(navigator.connection && navigator.connection.saveData) return;
-  const isLow = navigator.hardwareConcurrency && navigator.hardwareConcurrency <=4;
-  const total = isLow?5:9;
-  const c=document.getElementById('particles');
-  if(!c) return;
-  for(let i=0;i<total;i++){
-    const p=document.createElement('div');p.className='particle';
-    p.style.left=Math.random()*100+'vw';
-    p.style.animationDuration=(14+Math.random()*18)+'s';
-    p.style.animationDelay=Math.random()*10+'s';
-    c.appendChild(p);
-  }
-})();
-</script>
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
