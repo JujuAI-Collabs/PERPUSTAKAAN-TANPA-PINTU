@@ -24,7 +24,7 @@
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Arsip Visual - 01-05 GIF</title>
+<title>Arsip Visual - 01-05 Fix GIF 04-05</title>
 <style>
 :root{--bg:#06080f;--card:#12162a;--gold:#f5c16c;--muted:#8b8da3}
 body{margin:0;background:var(--bg);color:#e8e6e3;font-family:Georgia;text-align:center}
@@ -35,23 +35,37 @@ h1{color:var(--gold);letter-spacing:2px}
 .card img{width:100%;aspect-ratio:3/4.3;object-fit:cover;display:block;background:#0f1220}
 .card p{margin:0;padding:6px;color:var(--muted);font-size:.78rem}
 .ok{color:#7dd3a0;font-size:.85rem;margin:10px}
+.badge-err{color:#ff7a7a;font-size:.7rem}
 </style>
 </head>
 <body>
 <a href="index.html" class="back">← Kembali</a>
 <h1>ARSIP VISUAL 01-05</h1>
-<p class="ok">✅ GIF 7MB udah bisa! cover.gif + 01-05 fallback cover.jpg</p>
+<p class="ok">✅ FIX: 01-03 JPG statis, 04-05 GIF slow 5 detik, cover.gif utama 7MB — anti eror duplicate</p>
 
 <div class="grid">
-<div class="card"><img src="01.jpg?v=7MB" onerror="this.src='cover.gif?v=7MB'" alt="01"><p>01.jpg</p></div>
-<div class="card"><img src="02.jpg?v=7MB" onerror="this.src='cover.gif?v=7MB'" alt="02"><p>02.jpg</p></div>
-<div class="card"><img src="03.jpg?v=7MB" onerror="this.src='cover.gif?v=7MB'" alt="03"><p>03.jpg</p></div>
-<div class="card"><img src="04.jpg?v=7MB" onerror="this.src='cover.gif?v=7MB'" alt="04"><p>04.jpg</p></div>
-<div class="card"><img src="05.jpg?v=7MB" onerror="this.src='cover.gif?v=7MB'" alt="05"><p>05.jpg</p></div>
-<div class="card"><img src="cover.gif?v=7MB-FINAL" onerror="this.src='cover.jpg?v=7MB'" alt="cover gif 7MB"><p>cover.gif 7MB (utama)</p></div>
+<div class="card"><img src="01.jpg?v=7MB" onerror="this.onerror=null;this.src='cover.jpg?v=7MB'" alt="01"><p>01.jpg</p></div>
+<div class="card"><img src="02.jpg?v=7MB" onerror="this.onerror=null;this.src='cover.jpg?v=7MB'" alt="02"><p>02.jpg</p></div>
+<div class="card"><img src="03.jpg?v=7MB" onerror="this.onerror=null;this.src='cover.jpg?v=7MB'" alt="03"><p>03.jpg</p></div>
+<div class="card">
+  <img src="04.gif?v=7MB" onerror="this.onerror=null; this.src='04.jpg?v=7MB'; this.onerror=function(){this.onerror=null;this.src='cover.gif?v=7MB'} " alt="04 gif">
+  <p>04.gif <span class="badge-err">slow</span></p>
+</div>
+<div class="card">
+  <img src="05.gif?v=7MB" onerror="this.onerror=null; this.src='05.jpg?v=7MB'; this.onerror=function(){this.onerror=null;this.src='cover.gif?v=7MB'} " alt="05 gif">
+  <p>05.gif <span class="badge-err">slow</span></p>
+</div>
+<div class="card"><img src="cover.gif?v=7MB-FINAL" onerror="this.onerror=null;this.src='cover.jpg?v=7MB'" alt="cover gif 7MB"><p>cover.gif 7MB (utama)</p></div>
 </div>
 
-<p style="color:var(--muted);font-size:.8rem;padding:20px">Sekarang semua fallback ke cover.gif 7MB slow 5 detik!<br>Kalau 01.jpg belum di-upload, otomatis pakai cover.gif biar gak broken ... di HP<br>Upload foto asli dengan nama PERSIS: 01.jpg 02.jpg dst.</p>
+<p style="color:var(--muted);font-size:.8rem;padding:20px">
+FIX 04-05:<br>
+- Coba load <b>04.gif</b> dulu (versi GIF slow 7MB lo)<br>
+- Kalo gagal → coba <b>04.jpg</b><br>
+- Kalo masih gagal → baru <b>cover.gif</b><br><br>
+Jadi gak duplicate cover lagi! Upload 04.gif & 05.gif 7MB terpisah ya Jun.<br>
+Kalau belum ada 04.gif, pakai 04.jpg 274KB dulu juga bisa.
+</p>
 
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
