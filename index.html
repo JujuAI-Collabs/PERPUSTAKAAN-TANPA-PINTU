@@ -19,8 +19,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;l
 header{text-align:center;padding:56px 20px 12px;position:relative;z-index:1}
 header h1{font-size:2.15rem;letter-spacing:3px;margin:0;color:var(--accent)}
 header p{color:var(--muted);margin:6px 0 0;font-size:.9rem}
-.cover{max-width:360px;margin:22px auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5);border:1px solid #2a2a30}
-.cover img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+.cover{max-width:380px;margin:22px auto;border-radius:18px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.6),0 0 0 1px #2a2a30;position:relative}
+.cover img{width:100%;display:block;aspect-ratio:3/4.6;object-fit:cover}
+.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,16,.35),transparent 35%);pointer-events:none}
 .container{max-width:860px;margin:0 auto;padding:16px 20px 40px;position:relative;z-index:1}
 .main-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 28px}
 .nav-card{display:block;padding:18px;border-radius:14px;text-decoration:none;border:1px solid #262630;background:var(--card);transition:transform .15s}
@@ -57,21 +58,33 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem}
 <div id="particles" aria-hidden="true"></div>
 <header>
 <h1>PERPUSTAKAAN TANPA PINTU</h1>
-<p>Arsip Final • Engine ringan lulus audit • Struktur baru</p>
-<div class="cover"><img src="assets/cover-white-wolf.webp" alt="Cover" loading="eager" fetchpriority="high" decoding="async"></div>
+<p>Arsip Final • Cover Baru • Engine ringan lulus audit</p>
+<div class="cover"><img src="cover-perpustakaan-tanpa-pintu-thumb.webp" srcset="cover-perpustakaan-tanpa-pintu-thumb.webp 400w, cover-perpustakaan-tanpa-pintu.jpg 1080w" sizes="(max-width: 600px) 380px, 380px" alt="Perpustakaan Tanpa Pintu - Cover Final" loading="eager" fetchpriority="high" decoding="async"></div>
 </header>
 <div class="container">
 <div class="main-nav">
-<a href="arsip-visual.html" class="nav-card visual"><h3>🖼️ ARSIP VISUAL</h3><p>Galeri foto full per Season. Buka kalau mau lihat foto aja. Ringan, lazy-load.</p></a>
+<a href="arsip-visual.html" class="nav-card visual"><h3>🖼️ ARSIP VISUAL</h3><p>Galeri foto full per Season. Cover baru ada di Galeri Season 01.</p></a>
 <a href="#seasons" class="nav-card"><h3>📖 SEASONS</h3><p>Baca cerita Bab 01-03 dst. Tanpa gambar berat.</p></a>
 </div>
 <div id="arsip-visual">
 <div class="section-title"><h2>🖼️ ARSIP VISUAL</h2><div class="line"></div><span class="badge">foto terpisah biar HP gak berat</span></div>
 <div class="visual-grid">
-<a class="v-card" href="galeri-season-01.html"><div class="thumb"><img src="assets/cover-white-wolf.webp" alt="Season 01" loading="lazy" decoding="async"></div><div class="info"><b>Season 01</b><span>Perpustakaan Tanpa Pintu • 12 foto</span></div></a>
-<a class="v-card" href="galeri-season-02.html"><div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S02</div><div class="info"><b>Season 02</b><span>Pintu Yang Pulang • coming soon</span></div></a>
-<a class="v-card" href="galeri-season-03.html"><div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S03</div><div class="info"><b>Season 03</b><span>Tagihan Iterasi • coming soon</span></div></a>
-<a class="v-card" href="galeri-season-04.html"><div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S04</div><div class="info"><b>Season 04</b><span>Gelang Yang Mengingat • coming soon</span></div></a>
+<a class="v-card" href="galeri-season-01.html">
+<div class="thumb"><img src="cover-perpustakaan-tanpa-pintu-thumb.webp" alt="Season 01" loading="lazy" decoding="async"></div>
+<div class="info"><b>Season 01</b><span>Perpustakaan Tanpa Pintu • Cover Baru</span></div>
+</a>
+<a class="v-card" href="galeri-season-02.html">
+<div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S02</div>
+<div class="info"><b>Season 02</b><span>Pintu Yang Pulang • coming soon</span></div>
+</a>
+<a class="v-card" href="galeri-season-03.html">
+<div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S03</div>
+<div class="info"><b>Season 03</b><span>Tagihan Iterasi • coming soon</span></div>
+</a>
+<a class="v-card" href="galeri-season-04.html">
+<div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S04</div>
+<div class="info"><b>Season 04</b><span>Gelang Yang Mengingat • coming soon</span></div>
+</a>
 </div>
 <p style="color:var(--muted);font-size:.85rem;margin-top:10px">* Foto per season beda file. Index cuma thumbnail 1 gambar, sisanya load di halaman galeri-nya masing-masing.</p>
 </div>
@@ -88,7 +101,7 @@ footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem}
 <div class="season"><h3>SEASON 04 - GELANG YANG MENGINGAT</h3><div class="bab-list"><a href="#"><span>Coming Soon</span><small>--</small></a></div></div>
 </div>
 </div>
-<footer>INDEX FINAL • engine lulus • struktur baru • foto terpisah © 2026</footer>
+<footer>INDEX FINAL • Cover Baru • engine lulus • foto terpisah biar HP Juju aman © 2026</footer>
 <script>
 (function(){
   if(navigator.connection && navigator.connection.saveData) return;
