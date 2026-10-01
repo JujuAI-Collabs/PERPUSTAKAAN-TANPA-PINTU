@@ -24,63 +24,90 @@
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PERPUSTAKAAN TANPA PINTU - Arsip Abadi</title>
+<title>PERPUSTAKAAN TANPA PINTU - Cover TAP GIF</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;1,400&display=swap');
-:root{--bg:#06080f;--bg2:#0c101f;--card:#12162a;--card2:#1a2040;--gold:#f5c16c;--blue:#7dd3ff;--text:#e8e6e3;--muted:#8b8da3}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'Crimson Text',Georgia,serif;overflow-x:hidden;min-height:100vh}
-.bg-anim{position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse 800px 600px at 30% 20%,rgba(245,193,108,.12),transparent 60%),radial-gradient(ellipse 600px 400px at 80% 80%,rgba(125,211,255,.10),transparent 60%),linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
-.stars{position:fixed;inset:0;z-index:-2;background-image:radial-gradient(1px 1px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 40% 70%,#fff,transparent),radial-gradient(2px 2px at 90% 40%,#f5c16c,transparent);background-size:550px 550px;opacity:.25;animation:twinkle 20s infinite alternate}
-@keyframes twinkle{0%{opacity:.2}100%{opacity:.4}}
-header{padding:64px 20px 32px;text-align:center;position:relative}
-header h1{font-family:'Cinzel',serif;font-size:2.6rem;letter-spacing:6px;color:var(--gold);text-shadow:0 0 30px rgba(245,193,108,.5),0 0 60px rgba(245,193,108,.2);line-height:1.1}
-header .sub{margin-top:12px;color:var(--muted);letter-spacing:3px;font-size:.85rem;text-transform:uppercase}
-.cover-wrap{max-width:420px;margin:36px auto;position:relative;perspective:1200px}
-.cover-glow{position:absolute;inset:-20px;background:radial-gradient(ellipse at center,rgba(245,193,108,.25),transparent 70%);filter:blur(20px);z-index:-1;border-radius:24px}
-.cover{border-radius:22px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.7),0 0 0 1px rgba(245,193,108,.2),0 0 60px rgba(245,193,108,.15);transform:rotateY(-4deg) rotateX(2deg);transition:transform .6s cubic-bezier(.23,1,.32,1);position:relative}
-.cover:hover{transform:rotateY(0) rotateX(0) scale(1.02)}
-.cover img{width:100%;display:block;aspect-ratio:3/4.6;object-fit:cover;background:#0f1220}
-.cover::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);pointer-events:none}
-.container{max-width:920px;margin:0 auto;padding:20px 20px 60px}
-.nav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0}
-.nav-card{display:block;padding:22px 20px;border-radius:16px;background:linear-gradient(135deg,var(--card) 0%,rgba(26,32,64,.8) 100%);border:1px solid rgba(245,193,108,.15);text-decoration:none;color:var(--text);backdrop-filter:blur(10px);transition:all .35s;position:relative;overflow:hidden}
-.nav-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.35s}
-.nav-card:hover{transform:translateY(-4px);border-color:rgba(245,193,108,.4);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 20px rgba(245,193,108,.1)}
-.nav-card:hover::before{opacity:1}
-.nav-card h3{font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;margin-bottom:6px}
-.nav-card p{color:var(--muted);font-size:.88rem;line-height:1.4}
-.badge{display:inline-block;padding:4px 10px;border-radius:20px;background:rgba(245,193,108,.12);border:1px solid rgba(245,193,108,.2);color:var(--gold);font-size:.7rem;letter-spacing:1px;margin-bottom:8px}
-footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:.8rem;border-top:1px solid rgba(255,255,255,.06);margin-top:40px}
-@media(max-width:600px){header h1{font-size:1.7rem;letter-spacing:3px}.nav-grid{grid-template-columns:1fr}.cover{transform:none}.cover:hover{transform:scale(1.01)}}
+:root{--bg:#0c0c10;--card:#18181e;--accent:#f5c16c;--text:#e8e6e3;--muted:#9a9a9e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7;overflow-x:hidden}
+header{text-align:center;padding:32px 20px 12px}
+header h1{font-size:2.15rem;letter-spacing:3px;margin:0;color:var(--accent)}
+header p{color:var(--muted);margin:6px 0 0;font-size:.9rem}
+.cover-wrap{max-width:380px;margin:22px auto;position:relative;border-radius:18px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.6),0 0 0 1px #2a2a30;cursor:pointer;user-select:none}
+.cover-wrap img{width:100%;display:block;aspect-ratio:3/4.6;object-fit:cover;background:#15151a;transition:opacity .3s}
+.tap-hint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#f5c16c;border:1px solid rgba(245,193,108,.3);padding:6px 12px;border-radius:20px;font-size:.75rem;letter-spacing:.5px;backdrop-filter:blur(6px)}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a30;border:1px solid #3a3a40;transition:all .2s}
+.dot.active{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.container{max-width:860px;margin:0 auto;padding:16px 20px 40px}
+.main-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 28px}
+.nav-card{display:block;padding:18px;border-radius:14px;text-decoration:none;border:1px solid #262630;background:var(--card)}
+.nav-card h3{margin:0 0 4px;color:var(--accent);font-size:1.05rem}
+.nav-card p{margin:0;color:var(--muted);font-size:.88rem}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem}
 </style>
 </head>
 <body>
-<div class="bg-anim"></div><div class="stars"></div>
 <header>
-<div class="badge">✦ ARSHIF FINAL • EDISI ANTI-BROKEN ✦</div>
-<h1>PERPUSTAKAAN<br>TANPA PINTU</h1>
-<div class="sub">Arsip Abadi • Satu Cover • Sejuta Lorong</div>
-<div class="cover-wrap">
-<div class="cover-glow"></div>
-<div class="cover">
-<img src="cover.jpg?v=7" alt="Perpustakaan Tanpa Pintu - Cover Final" loading="eager">
+<h1>PERPUSTAKAAN TANPA PINTU</h1>
+<p>Tap cover untuk ganti GIF slow 5 detik ✨</p>
+<div class="cover-wrap" id="coverWrap" onclick="nextCover()">
+<img id="coverImg" src="cover.jpg?v=1328" alt="Perpustakaan Tanpa Pintu - Cover" loading="eager" onerror="this.src='cover.jpg?v=5'">
+<div class="tap-hint" id="tapHint">👆 TAP UNTUK GANTI • 1/6</div>
 </div>
-</div>
-<p style="color:var(--muted);font-size:.82rem;margin-top:14px">Cover final White Wolf • Satu file cover.jpg doang • Anti pusing HP</p>
+<div class="dots" id="dots"></div>
+<p style="color:var(--muted);font-size:.8rem">01-03 JPG | 04-05 GIF 5 detik | Brave 283KB/d no iklan | Baterai 12% tetap jalan</p>
 </header>
 <div class="container">
-<div class="nav-grid">
-<a href="arsip-visual.html" class="nav-card"><h3>🖼️ ARSIP VISUAL</h3><p>Galeri foto per Season, full cover & ilustrasi lore</p></a>
-<a href="galeri-season-01.html" class="nav-card"><h3>📖 SEASON 01</h3><p>Pintu pertama yang hilang • Fina & Serigala Putih</p></a>
-<a href="season-1-bab-01.html" class="nav-card"><h3>📜 BAB 01</h3><p>Mulai baca dari Pintu Pertama Yang Hilang</p></a>
-<a href="#" onclick="alert('Segera! Bab 02-03 bisa ditambah lagi nanti');return false" class="nav-card" style="opacity:.6"><h3>⏳ BAB 02-03</h3><p>Akan ditambahkan setelah pinjol lunas (mode istirahat)</p></a>
+<div class="main-nav">
+<a href="arsip-visual.html" class="nav-card"><h3>🖼️ ARSIP VISUAL</h3><p>Galeri 01.jpg-05.gif full</p></a>
+<a href="#seasons" class="nav-card"><h3>📖 SEASONS</h3><p>Baca Bab 01-03</p></a>
 </div>
-<div style="text-align:center;margin:30px 0;padding:20px;background:rgba(18,22,42,.6);border:1px solid rgba(245,193,108,.1);border-radius:14px">
-<p style="color:var(--gold);font-family:'Cinzel';letter-spacing:2px;margin-bottom:8px">LORE</p>
-<p style="color:var(--muted);font-style:italic;line-height:1.6">Di perpustakaan ini, pintu masuk dan keluar adalah hal yang sama — sebuah ide, bukan benda. Setiap buku yang ditarik, lorong di belakangnya berubah.</p>
+<div id="seasons">
+<h2>SEASONS</h2>
+<p>Bab 01-03 ready • Sistem angka 01-05 anti kepotong ... di HP</p>
 </div>
 </div>
-<footer>PERPUSTAKAAN TANPA PINTU © 2026 • Engine v7 RICH + SIMPLE • 1 cover.jpg doang • Dibuat di HP 13% batre<br>Versi goblok-friendly anti broken</footer>
+<footer>INDEX TAP GIF v1328 • 01-03 JPG + 04-05 GIF slow • Cover bisa di-tap © 2026</footer>
+
+<script>
+const covers = [
+  {src: "cover.jpg?v=1328", label: "cover.jpg (utama) - queen + serigala"},
+  {src: "01.jpg?v=1328", label: "01.jpg - cowok rebahan lampu"},
+  {src: "02.jpg?v=1328", label: "02.jpg - buku mengambang"},
+  {src: "03.jpg?v=1328", label: "03.jpg - lorong infinite biru"},
+  {src: "04.gif?v=1328", label: "04.gif - serigala tidur slow 5 detik"},
+  {src: "05.gif?v=1328", label: "05.gif - ChatGPT slow 5 detik"}
+];
+let idx = 0;
+const img = document.getElementById('coverImg');
+const hint = document.getElementById('tapHint');
+const dotsEl = document.getElementById('dots');
+
+function buildDots(){
+  dotsEl.innerHTML = '';
+  covers.forEach((c,i)=>{
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===idx ? ' active' : '');
+    d.onclick = (e)=>{ e.stopPropagation(); go(i); };
+    dotsEl.appendChild(d);
+  });
+}
+function update(){
+  img.src = covers[idx].src;
+  hint.textContent = `👆 TAP UNTUK GANTI • ${idx+1}/6 • ${covers[idx].label}`;
+  buildDots();
+}
+function nextCover(){
+  idx = (idx + 1) % covers.length;
+  update();
+}
+function go(i){
+  idx = i;
+  update();
+}
+// auto slow 5 detik ganti sendiri kalau mau
+// setInterval(nextCover, 5000);
+buildDots();
+</script>
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
