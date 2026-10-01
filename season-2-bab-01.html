@@ -13,6 +13,40 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-grad
 article{max-width:740px;margin:18px auto 30px;padding:28px 24px 30px;background:var(--card);border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.4)}
 h1{color:var(--gold);font-size:1.45rem;letter-spacing:.8px;margin:0 0 4px;text-align:center}.season-label{text-align:center;color:var(--muted);font-size:.78rem;letter-spacing:2px;margin-bottom:18px}p{text-align:left;margin:0 0 1.35em;line-height:1.95;font-size:1.02rem}strong{color:#ffe4a8;font-weight:700}em{color:#c9b896;font-style:italic}.bersambung{text-align:center;margin:38px 0 18px;padding:18px;border-top:1px dashed rgba(245,193,108,.25);border-bottom:1px dashed rgba(245,193,108,.25);font-size:1.1rem;letter-spacing:1px;color:var(--gold);font-weight:bold}.bersambung a{color:var(--gold);text-decoration:none;border:1px solid rgba(245,193,108,.3);padding:8px 18px;border-radius:10px;background:var(--card2);display:inline-block;margin-top:10px}@media(max-width:600px){article{padding:20px 18px}p{font-size:1rem;line-height:1.85}h1{font-size:1.25rem}}
 </style>
+<style>
+/* INTERAKSI RINGAN — PTP Reader */
+html{scroll-behavior:smooth}
+body{position:relative}
+body::after{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 30% 20%,rgba(210,220,235,.035),transparent 38%),radial-gradient(ellipse at 70% 80%,rgba(80,100,120,.035),transparent 42%);animation:mistDrift 24s ease-in-out infinite alternate}
+@keyframes mistDrift{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.08)}}
+article{position:relative;overflow:hidden}
+article::before{content:"";position:absolute;left:-30%;right:-30%;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(245,193,108,.28),transparent);transform:translateX(-60%);animation:surfaceGlint 9s ease-in-out infinite}
+@keyframes surfaceGlint{0%,55%{transform:translateX(-60%);opacity:0}65%{opacity:1}100%{transform:translateX(60%);opacity:0}}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .65s ease,transform .65s ease}
+.reveal.show{opacity:1;transform:none}
+.dialogue{padding-left:1rem;border-left:2px solid rgba(245,193,108,.22);font-style:italic;color:#d8ccb4}
+.ripple{position:fixed;width:18px;height:18px;border:1px solid rgba(245,193,108,.55);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(.25);animation:ripple .75s ease-out forwards;z-index:20}
+@keyframes ripple{to{transform:translate(-50%,-50%) scale(5);opacity:0}}
+#scrollGlow{position:fixed;left:0;top:0;width:2px;height:0;background:rgba(245,193,108,.55);z-index:30;box-shadow:0 0 8px rgba(245,193,108,.25)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body::before,body::after,article::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+<div id="scrollGlow" aria-hidden="true"></div>
+<script>
+(function(){
+ const article=document.querySelector('article');
+ if(!article)return;
+ const ps=[...article.querySelectorAll('p')];
+ ps.forEach((p,i)=>{p.classList.add('reveal');p.style.transitionDelay=Math.min(i*18,180)+'ms';});
+ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -5% 0px'});
+  ps.forEach(p=>io.observe(p));
+ }else ps.forEach(p=>p.classList.add('show'));
+ const bar=document.getElementById('scrollGlow');
+ const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;bar.style.height=(max>0?(scrollY/max)*100:0)+'vh'};
+ addEventListener('scroll',update,{passive:true});update();
+ addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.pointerType==='mouse'){const r=document.createElement('span');r.className='ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.appendChild(r);setTimeout(()=>r.remove(),800)}},{passive:true});
+})();
+</script>
 </head>
 <body>
 <div class="nav top"><a href="index.html">← Daftar Isi</a><div class="nav-right"><a href="season-2-bab-02.html" class="next">Bab 02: Penghuni Yang Lupa Nama →</a></div></div>
@@ -24,17 +58,17 @@ h1{color:var(--gold);font-size:1.45rem;letter-spacing:.8px;margin:0 0 4px;text-a
 <p>Bau tanah basah bercampur daun busuk yang menumpuk di selokan pasar sudah jadi bau rumah baginya — tapi pagi ini ada bau lain yang menyelip di antaranya.</p>
 <p><em>Bau bunga kopi.</em></p>
 <p>Tipis. Manis. Juju berhenti menyusun sayur, mengendus udara. Matanya langsung melirik ke lapak sebelah, tempat Bu Narti biasa menaruh termos kopi hitamnya.</p>
-<p>"Pagi-pagi udah ngopi, Bu?" tanyanya, setengah berharap jawabannya iya, biar logis.</p>
+<p class="dialogue"><em>"Pagi-pagi udah ngopi, Bu?"</em></p><p>Juju bertanya, setengah berharap jawabannya iya, biar logis.</p>
 <p>Bu Narti mengangkat termosnya, mengocoknya. "Lah kosong, Ju. Dari kemarin gak ngisi. Kompor gas habis." Ia membuka tutupnya, memperlihatkan dalamnya yang kering, bahkan ampasnya sudah hilang.</p>
 <p>Bau itu tetap ada. Lebih jelas sekarang, tepat di belakang tengkuknya.</p>
 <p>Ia menggeleng, melanjutkan menyusun kangkung. Tangannya berhenti di tengah ikatan kangkung ketiga.</p>
 <p><strong>Kukunya hitam.</strong></p>
 <p>Bukan hitam kotor tanah yang biasa — ia tahu betul bedanya, sudah bertahun-tahun jari-jarinya akrab dengan lumpur sawah tempat sayur-sayur ini tumbuh. Ini hitam yang lain. Pekat, sedikit mengkilap kalau kena cahaya lampu pasar, seperti tinta yang belum kering, dan yang paling aneh: tidak luntur meski ia sudah menggosoknya dengan air comberan yang biasa dipakai mencuci akar-akar sayur.</p>
 <p>Ia menggosoknya lagi dengan ujung celemeknya. Tetap hitam. Dan yang lebih aneh — dingin. Sangat dingin, seperti habis mencelupkan jari ke dalam air es rawa di tengah malam, padahal hawa pasar pagi ini gerah dan lengket. Dinginnya menjalar sampai ke pergelangan, bikin bulu kuduknya berdiri meski keringat mengucur di pelipisnya.</p>
-<p>"Noda kubis kali, Ju," kata Bu Narti, tetangga lapak sayur yang lapaknya sudah berjejer lima tahun dengannya, sambil melempar senyum menawar harga. "Beli lima ribu boleh nggak, kembang kolnya? Yang kemarin masih seger loh punyamu."</p>
+<p class="dialogue"><em>"Noda kubis kali, Ju,"</em> kata Bu Narti, tetangga lapak sayur yang lapaknya sudah berjejer lima tahun dengannya.</p><p class="dialogue"><em>"Beli lima ribu boleh nggak, kembang kolnya? Yang kemarin masih seger loh punyamu."</em></p>
 <p>Juju mengangguk saja, menimbang tanpa benar-benar menghitung. Saat mengembalikan uang kembalian dua ribu, tanpa sengaja jari Bu Narti menyenggol punggung tangan kirinya — tangan yang kukunya hitam itu.</p>
 <p>Bu Narti diam. Bukan diam biasa. Matanya terkunci ke kuku Juju selama dua detik penuh, bibirnya sedikit terbuka seperti mau ngomong sesuatu tapi lupa kata-katanya. Lalu ia mengerjap cepat, menarik tangannya kasar, dan menatap keranjang kembang kolnya lagi dengan wajah bingung.</p>
-<p>"Eh... anu... tadi saya mau bilang apa ya? Lupa aku, Ju," katanya, suaranya tiba-tiba kecil.</p>
+<p class="dialogue"><em>"Eh... anu... tadi saya mau bilang apa ya? Lupa aku, Ju,"</em></p><p>Katanya, suaranya tiba-tiba kecil.</p>
 <p>Juju cepat-cepat menarik tangan kirinya masuk saku celemek. Jantungnya berdegup. Noda itu bukan cuma tinta. Noda itu bikin orang lupa sebentar.</p>
 <p>Siang itu ia keliling komplek seperti biasa. Gerobak dorongnya berdecit di setiap putaran roda, membawa sisa sayur pagi yang belum laku. "Sayuurr... sayur segerr..." teriaknya, tapi suaranya serak. Ibu-ibu komplek Perumahan Mawar keluar satu per satu, menawar, memilih, kadang curhat soal anaknya.</p>
 <p>Juju melayani dengan tangan kanan. Tangan kiri yang kukunya hitam ia sembunyikan di balik celemek, di saku.</p>
@@ -62,7 +96,7 @@ h1{color:var(--gold);font-size:1.45rem;letter-spacing:.8px;margin:0 0 4px;text-a
 <p>Di tengah keramaian itu, ada tangan yang menepuk bahunya dari belakang. Dingin.</p>
 <p>Ia menoleh cepat—tidak ada siapa-siapa di posisi yang seharusnya. Hanya kerumunan orang yang lalu-lalang, tak ada satu pun yang menatap ke arahnya.</p>
 <p>Tapi suara itu sempat terdengar, pelan, hampir seperti berbisik tepat di telinganya, tenggelam di antara riuh tawar-menawar pasar pagi:</p>
-<p>"Kau membawa tinta mereka ke sini, Jujuna."</p>
+<p class="dialogue"><em>"Kau membawa tinta mereka ke sini, Jujuna."</em></p>
 <p>Juju berdiri mematung di antara keranjang-keranjang sayurnya, tangan masih menggenggam seikat bayam yang perlahan terjatuh ke tanah becek pasar. Bayam itu tergeletak di sana, di atas tanah hitam bercampur air comberan, daunnya yang segar tadi pagi perlahan layu kena lumpur.</p>
 <p>Biasanya, Juju akan langsung memungutnya. Rugi dua ribu kalau dibiarkan. Sayur adalah uang, uang adalah hidup.</p>
 <p>Tapi sore itu, sampai lapak-lapak sebelah sudah bongkar dan pulang, seikat bayam itu tetap tergeletak di tanah becek. Tidak ia pungut. Tidak ia cuci. Seolah tangannya sudah lupa caranya menjadi pedagang sayur.</p>
