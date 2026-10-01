@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsip Visual - PERPUSTAKAAN TANPA PINTU</title>
+<style>
+:root{--bg:#0c0c10;--card:#18181e;--card2:#21212a;--accent:#f5c16c;--accent2:#7dd3ff;--text:#e8e6e3;--muted:#9a9a9e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7}
+.bg-anim{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 600px 400px at 20% 30%,rgba(42,74,106,.14),transparent 70%),#0c0c10}
+.container{max-width:900px;margin:0 auto;padding:20px}
+header{text-align:center;padding:30px 20px 10px}
+header h1{color:var(--accent2);letter-spacing:2px;margin:0}
+header p{color:var(--muted);font-size:.9rem}
+.back{display:inline-block;margin:16px 0;padding:8px 14px;background:#18181e;border:1px solid #262630;border-radius:8px;color:var(--accent);text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:18px}
+.card{background:var(--card);border:1px solid #262630;border-radius:14px;overflow:hidden;text-decoration:none;color:var(--text);transition:transform .15s}
+.card:hover{transform:translateY(-2px);border-color:rgba(125,211,255,.35)}
+.card .thumb{aspect-ratio:16/10;background:#15151a;overflow:hidden}
+.card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.card .info{padding:12px 14px}
+.card .info b{display:block;font-size:1rem}
+.card .info span{font-size:.82rem;color:var(--muted)}
+.badge{font-size:.7rem;background:#21212a;border:1px solid #2a2a30;padding:2px 8px;border-radius:20px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="bg-anim"></div>
+<div class="container">
+<header>
+<a href="index.html" class="back">← Kembali ke Arsip</a>
+<h1>🖼️ ARSIP VISUAL</h1>
+<p>Halaman terpisah khusus foto. Index tetap ringan, foto full load di sini aja.<br>Foto per season beda file, biar HP low-mid aman.</p>
+</header>
+<div class="grid">
+<a class="card" href="galeri-season-01.html">
+<div class="thumb"><img src="assets/cover-white-wolf.webp" alt="Season 01" loading="eager" fetchpriority="high" decoding="async"></div>
+<div class="info"><b>Season 01 - Perpustakaan Tanpa Pintu</b><span>12 foto • klik buka galeri</span> <span class="badge">ready</span></div>
+</a>
+<a class="card" href="galeri-season-02.html">
+<div class="thumb" style="display:flex;align-items:center;justify-content:center;background:#1a1a24;color:var(--muted)">S02 - Soon</div>
+<div class="info"><b>Season 02 - Pintu Yang Pulang</b><span>coming soon</span></div>
+</a>
+<a class="card" href="galeri-season-03.html">
+<div class="thumb" style="display:flex;align-items:center;justify-content:center;background:#1a1a24;color:var(--muted)">S03 - Soon</div>
+<div class="info"><b>Season 03 - Tagihan Iterasi</b><span>coming soon</span></div>
+</a>
+<a class="card" href="galeri-season-04.html">
+<div class="thumb" style="display:flex;align-items:center;justify-content:center;background:#1a1a24;color:var(--muted)">S04 - Soon</div>
+<div class="info"><b>Season 04 - Gelang Yang Mengingat</b><span>coming soon</span></div>
+</a>
+</div>
+<p style="color:var(--muted);font-size:.85rem;margin-top:20px;text-align:center">* Workflow: index.html → klik Arsip Visual → masuk sini → klik Season → galeri-season-XX.html</p>
+</div>
+</body>
+</html>
