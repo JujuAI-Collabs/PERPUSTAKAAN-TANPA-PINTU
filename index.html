@@ -1,127 +1,109 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>PERPUSTAKAAN TANPA PINTU - Arsip</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { background: #050507; color: #E8E0D0; font-family: 'Inter', sans-serif; min-height: 100vh; }
-    .serif { font-family: 'Cormorant Garamond', serif; }
-    .gold { color: #D7B56A; }
-    header { padding: 48px 24px 32px; border-bottom: 1px solid rgba(215, 181, 106, 0.12); text-align: center; }
-    header .subtitle { font-size: 11px; letter-spacing: 0.38em; margin-bottom: 16px; }
-    header h1 { font-size: clamp(36px, 8vw, 56px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
-    header .divider { width: 48px; height: 1px; background: rgba(215, 181, 106, 0.5); margin: 16px auto; }
-    header .tagline { font-size: 13px; color: #8A857C; letter-spacing: 0.08em; max-width: 640px; margin: 16px auto 0; line-height: 1.6; }
-    main { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
-    .hero { position: relative; overflow: hidden; border: 1px solid rgba(215, 181, 106, 0.18); background: radial-gradient(1200px 600px at 50% -10%, rgba(215, 181, 106, 0.14), transparent), #0A0A0C; border-radius: 18px; padding: 14px; margin-bottom: 48px; }
-    .hero-image-container { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16 / 9; background: #000; }
-    .hero-image-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
-    .hero-image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5, 5, 7, 0.85) 0%, rgba(5, 5, 7, 0.1) 55%); }
-    .hero-label { position: absolute; left: 22px; bottom: 18px; right: 22px; display: flex; justify-content: flex-start; align-items: flex-end; gap: 16px; }
-    .hero-label-left .code { font-size: 10px; letter-spacing: 0.28em; margin-bottom: 8px; }
-    .hero-label-left .title { font-size: 22px; margin-top: 4px; }
-    .seasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 48px; }
-    @media (max-width: 768px) { .seasons-grid { grid-template-columns: 1fr; gap: 20px; } }
-    .season-card { background: #0D0D10; border: 1px solid rgba(215, 181, 106, 0.18); border-radius: 14px; overflow: hidden; transition: all 0.3s ease; text-decoration: none; color: inherit; display: block; }
-    .season-card:hover { border-color: rgba(215, 181, 106, 0.4); transform: translateY(-4px); }
-    .season-card.with-image .card-image { width: 100%; height: 160px; background: #000; overflow: hidden; border-bottom: 1px solid rgba(215, 181, 106, 0.12); }
-    .season-card.with-image .card-image img { width: 100%; height: 100%; object-fit: cover; }
-    .season-card.text-only { display: flex; flex-direction: column; justify-content: center; min-height: 200px; }
-    .card-content { padding: 24px 20px; display: flex; flex-direction: column; gap: 12px; }
-    .season-card.text-only .card-content { justify-content: center; align-items: center; text-align: center; }
-    .card-number { font-size: 11px; letter-spacing: 0.2em; color: #D7B56A; text-transform: uppercase; }
-    .card-title { font-size: 20px; line-height: 1.3; letter-spacing: -0.01em; }
-    .season-card.text-only .card-title { font-size: 22px; }
-    .section-divider { margin: 48px 0 32px; border-top: 1px solid rgba(215, 181, 106, 0.12); padding-top: 32px; }
-    .section-title { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; color: #8A857C; }
-    footer { text-align: center; padding: 32px 24px; border-top: 1px solid rgba(215, 181, 106, 0.12); color: #6F6B63; font-size: 11px; letter-spacing: 0.08em; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PERPUSTAKAAN TANPA PINTU - Arsip Final</title>
+<style>
+:root{--bg:#0c0c10;--card:#18181e;--card2:#21212a;--accent:#f5c16c;--accent2:#7dd3ff;--text:#e8e6e3;--muted:#9a9a9e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7;overflow-x:hidden}
+.bg-anim{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 600px 400px at 20% 30%,rgba(42,74,106,.16),transparent 70%),radial-gradient(ellipse 500px 500px at 85% 70%,rgba(70,50,90,.13),transparent 70%),#0c0c10}
+.orb{position:absolute;border-radius:50%;opacity:.2;background:radial-gradient(circle, currentColor 0%, transparent 70%);will-change:transform;animation:float 28s ease-in-out infinite}
+.orb1{width:360px;height:360px;color:#2a4a6a;left:-80px;top:6%}
+.orb2{width:420px;height:420px;color:#3a2e5a;right:-100px;top:50%;animation-duration:36s;animation-direction:reverse}
+@keyframes float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(16px,-14px,0)}}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.particle{position:absolute;width:2px;height:2px;background:var(--accent2);border-radius:50%;opacity:.55;animation:drift linear infinite}
+@keyframes drift{from{transform:translate3d(0,110vh,0)}to{transform:translate3d(15px,-10vh,0)}}
+header{text-align:center;padding:56px 20px 12px;position:relative;z-index:1}
+header h1{font-size:2.15rem;letter-spacing:3px;margin:0;color:var(--accent)}
+header p{color:var(--muted);margin:6px 0 0;font-size:.9rem}
+.cover{max-width:360px;margin:22px auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5);border:1px solid #2a2a30}
+.cover img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+.container{max-width:860px;margin:0 auto;padding:16px 20px 40px;position:relative;z-index:1}
+.main-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 28px}
+.nav-card{display:block;padding:18px;border-radius:14px;text-decoration:none;border:1px solid #262630;background:var(--card);transition:transform .15s}
+.nav-card:hover{transform:translateY(-2px);border-color:rgba(245,193,108,.35)}
+.nav-card h3{margin:0 0 4px;color:var(--accent);font-size:1.05rem}
+.nav-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.4}
+.nav-card.visual h3{color:var(--accent2)}
+.nav-card.visual{border-color:rgba(125,211,255,.18)}
+.section-title{display:flex;align-items:center;gap:10px;margin:32px 0 14px}
+.section-title h2{margin:0;font-size:1.15rem;letter-spacing:1px}
+.section-title .line{flex:1;height:1px;background:#262630}
+.badge{font-size:.7rem;padding:2px 8px;border-radius:20px;background:#21212a;color:var(--muted);border:1px solid #2a2a30}
+.visual-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.v-card{background:var(--card);border:1px solid #262630;border-radius:12px;overflow:hidden;text-decoration:none;color:var(--text);display:block}
+.v-card .thumb{aspect-ratio:4/3;background:#15151a;position:relative;overflow:hidden}
+.v-card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.v-card .info{padding:10px 12px}
+.v-card .info b{font-size:.92rem;display:block}
+.v-card .info span{font-size:.78rem;color:var(--muted)}
+.v-card:hover{border-color:rgba(125,211,255,.35)}
+.season{background:var(--card);border:1px solid #262630;border-radius:14px;padding:18px;margin:14px 0}
+.season h3{margin:0 0 10px;font-size:1rem;color:var(--accent)}
+.bab-list{display:grid;gap:8px}
+.bab-list a{display:flex;justify-content:space-between;background:var(--card2);padding:11px 14px;border-radius:10px;text-decoration:none;color:var(--text);border:1px solid transparent}
+.bab-list a:hover{border-color:rgba(245,193,108,.25);transform:translateX(2px)}
+.bab-list small{color:var(--muted)}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.82rem}
+@media (prefers-reduced-motion:reduce){.orb,.particle{animation:none!important}}
+@media (max-width:600px){.main-nav{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.orb{opacity:.12}#particles .particle:nth-child(n+7){display:none}}
+</style>
 </head>
-
 <body>
-
-  <header>
-    <div class="serif gold subtitle">PERPUSTAKAAN TANPA PINTU</div>
-    <h1 class="serif">Arsip Perpustakaan</h1>
-    <div class="divider"></div>
-    <p class="tagline">Koleksi Season dari PERPUSTAKAAN TANPA PINTU</p>
-  </header>
-
-  <main>
-
-    <section class="hero">
-      <div class="hero-image-container">
-
-        <img src="./cover-white-wolf.webp"
-             alt="Perpustakaan Tanpa Pintu Cover"
-             loading="eager">
-
-        <div class="hero-image-overlay"></div>
-
-        <div class="hero-label">
-          <div class="hero-label-left serif">
-            <div class="code gold">PERPUSTAKAAN / ARSIP</div>
-            <div class="title">Tanpa Pintu</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section-divider">
-
-      <div class="section-title gold">Seasons</div>
-
-      <div class="seasons-grid">
-
-        <a href="season-1-bab-01.html" class="season-card with-image">
-
-          <div class="card-image">
-            <img src="./cover-white-wolf.webp"
-                 alt="Season 1 Cover"
-                 loading="lazy">
-          </div>
-
-          <div class="card-content">
-            <div class="card-number">Season 01</div>
-            <div class="card-title serif">PERPUSTAKAAN TANPA PINTU</div>
-          </div>
-
-        </a>
-
-        <div class="season-card text-only">
-          <div class="card-content">
-            <div class="card-number">Season 02</div>
-            <div class="card-title serif">PINTU YANG PULANG</div>
-          </div>
-        </div>
-
-        <div class="season-card text-only">
-          <div class="card-content">
-            <div class="card-number">Season 03</div>
-            <div class="card-title serif">TAGIHAN ITERASI</div>
-          </div>
-        </div>
-
-        <div class="season-card text-only">
-          <div class="card-content">
-            <div class="card-number">Season 04</div>
-            <div class="card-title serif">GELANG YANG MENGINGAT</div>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer>
-    ARSIP PERPUSTAKAAN TANPA PINTU
-  </footer>
-
+<div class="bg-anim" aria-hidden="true"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+<div id="particles" aria-hidden="true"></div>
+<header>
+<h1>PERPUSTAKAAN TANPA PINTU</h1>
+<p>Arsip Final • Engine ringan lulus audit • Struktur baru</p>
+<div class="cover"><img src="assets/cover-white-wolf.webp" alt="Cover" loading="eager" fetchpriority="high" decoding="async"></div>
+</header>
+<div class="container">
+<div class="main-nav">
+<a href="arsip-visual.html" class="nav-card visual"><h3>🖼️ ARSIP VISUAL</h3><p>Galeri foto full per Season. Buka kalau mau lihat foto aja. Ringan, lazy-load.</p></a>
+<a href="#seasons" class="nav-card"><h3>📖 SEASONS</h3><p>Baca cerita Bab 01-03 dst. Tanpa gambar berat.</p></a>
+</div>
+<div id="arsip-visual">
+<div class="section-title"><h2>🖼️ ARSIP VISUAL</h2><div class="line"></div><span class="badge">foto terpisah biar HP gak berat</span></div>
+<div class="visual-grid">
+<a class="v-card" href="galeri-season-01.html"><div class="thumb"><img src="assets/cover-white-wolf.webp" alt="Season 01" loading="lazy" decoding="async"></div><div class="info"><b>Season 01</b><span>Perpustakaan Tanpa Pintu • 12 foto</span></div></a>
+<a class="v-card" href="galeri-season-02.html"><div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S02</div><div class="info"><b>Season 02</b><span>Pintu Yang Pulang • coming soon</span></div></a>
+<a class="v-card" href="galeri-season-03.html"><div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S03</div><div class="info"><b>Season 03</b><span>Tagihan Iterasi • coming soon</span></div></a>
+<a class="v-card" href="galeri-season-04.html"><div class="thumb" style="background:#1a1a24;display:flex;align-items:center;justify-content:center;color:var(--muted)">S04</div><div class="info"><b>Season 04</b><span>Gelang Yang Mengingat • coming soon</span></div></a>
+</div>
+<p style="color:var(--muted);font-size:.85rem;margin-top:10px">* Foto per season beda file. Index cuma thumbnail 1 gambar, sisanya load di halaman galeri-nya masing-masing.</p>
+</div>
+<div id="seasons">
+<div class="section-title"><h2>📖 SEASONS</h2><div class="line"></div><span class="badge">baca doang, tanpa galeri berat</span></div>
+<div class="season"><h3>SEASON 01 - PERPUSTAKAAN TANPA PINTU</h3>
+<div class="bab-list">
+<a href="season-1-bab-01.html"><span>Bab 01 - Pintu Pertama Yang Hilang</span><small>01</small></a>
+<a href="season-1-bab-02.html"><span>Bab 02 - Lorong Tanpa Akhir</span><small>02</small></a>
+<a href="season-1-bab-03.html"><span>Bab 03 - Angka Yang Terhapus</span><small>03</small></a>
+</div></div>
+<div class="season"><h3>SEASON 02 - PINTU YANG PULANG</h3><div class="bab-list"><a href="#"><span>Coming Soon</span><small>--</small></a></div></div>
+<div class="season"><h3>SEASON 03 - TAGIHAN ITERASI</h3><div class="bab-list"><a href="#"><span>Coming Soon</span><small>--</small></a></div></div>
+<div class="season"><h3>SEASON 04 - GELANG YANG MENGINGAT</h3><div class="bab-list"><a href="#"><span>Coming Soon</span><small>--</small></a></div></div>
+</div>
+</div>
+<footer>INDEX FINAL • engine lulus • struktur baru • foto terpisah © 2026</footer>
+<script>
+(function(){
+  if(navigator.connection && navigator.connection.saveData) return;
+  const isLow = navigator.hardwareConcurrency && navigator.hardwareConcurrency <=4;
+  const total = isLow?5:9;
+  const c=document.getElementById('particles');
+  if(!c) return;
+  for(let i=0;i<total;i++){
+    const p=document.createElement('div');p.className='particle';
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(14+Math.random()*18)+'s';
+    p.style.animationDelay=Math.random()*10+'s';
+    c.appendChild(p);
+  }
+})();
+</script>
 </body>
 </html>
