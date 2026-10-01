@@ -24,7 +24,7 @@
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PERPUSTAKAAN TANPA PINTU - 4 Seasons Cover JPG 2-5MB</title>
+<title>PERPUSTAKAAN TANPA PINTU - Season 2 PINTU YANG PULANG</title>
 <style>
 :root{--bg:#0c0c10;--card:#18181e;--card2:#21212a;--accent:#f5c16c;--text:#e8e6e3;--muted:#9a9a9e}
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7;overflow-x:hidden}
@@ -47,45 +47,47 @@ footer{text-align:center;padding:28px;color:var(--muted);font-size:.78rem}
 <body>
 <header>
 <h1>PERPUSTAKAAN TANPA PINTU</h1>
-<p>4 Seasons • Cover JPG 2.6MB High-Res (bukan PNG!) • Background CSS Gerak • System data.json</p>
+<p>System 100% data.json • Season 2: PINTU YANG PULANG • No hardcode</p>
 <div style="text-align:center; padding:10px 0 16px;">
-<a href="arsip-visual.html" style="display:inline-block; color:#f5c16c; border:1px solid rgba(245,193,108,.35); padding:8px 16px; border-radius:10px; text-decoration:none; background:#18181e; font-size:.85rem;">🖼️ Lihat Cover & Arsip Visual (JPG) →</a>
+<a href="arsip-visual.html" style="display:inline-block; color:#f5c16c; border:1px solid rgba(245,193,108,.35); padding:8px 16px; border-radius:10px; text-decoration:none; background:#18181e; font-size:.85rem;">🖼️ Arsip Visual →</a>
 </div>
 </header>
 <div class="container">
-<div class="nav-grid">
-<a href="arsip-visual.html" class="nav-card"><h3>🖼️ ARSIP VISUAL</h3><p>01-05 JPG enteng + cover JPG 2.6MB</p></a>
-<a href="#season1" class="nav-card"><h3>📖 SEASON 1</h3><p id="nav-s1">memuat...</p></a>
-<a href="#season2" class="nav-card"><h3>📖 SEASON 2</h3><p id="nav-s2">memuat...</p></a>
-<a href="#season3" class="nav-card"><h3>📖 SEASON 3</h3><p id="nav-s3">memuat...</p></a>
+<div class="nav-grid" id="navgrid"></div>
+<div id="seasons"><div style="text-align:center;color:#f5c16c;padding:20px">Memuat dari data.json...</div></div>
 </div>
-<div id="seasons"><div style="text-align:center;color:#f5c16c;padding:20px">Memuat arsip...</div></div>
-</div>
-<footer id="foot">© 2026</footer>
+<footer id="foot">© 2026 - 100% dari data.json</footer>
 <script>
-const FALLBACK = {"project": "PERPUSTAKAAN TANPA PINTU", "seasons": [{"id": 1, "title": "Sebelum Semuanya Terulang", "desc": "Iterasi 4.129.804 - penjaga mulut dijahit", "babs": [{"no": "01", "slug": "season-1-bab-01", "judul": "Yang Tak Seharusnya Terucap", "status": "ready"}, {"no": "02", "slug": "season-1-bab-02", "judul": "Yang Tiada Ujung", "status": "ready"}, {"no": "03", "slug": "season-1-bab-03", "judul": "Hari Ini, Sekarang, Baru Saja", "status": "ready"}], "editable_by": "Fina"}, {"id": 2, "title": "Arsip Yang Hidup", "desc": "JPG semua", "babs": [{"no": "04", "slug": "season-2-bab-04", "judul": "Serigala Penjaga", "status": "coming", "img": "04.jpg"}, {"no": "05", "slug": "season-2-bab-05", "judul": "Kertas Melayang", "status": "coming", "img": "05.jpg"}, {"no": "06", "slug": "season-2-bab-06", "judul": "Halo Ratu", "status": "coming", "img": "cover.jpg 2.6MB"}], "editable_by": "Fina"}, {"id": 3, "title": "Ratu Perpustakaan", "babs": [{"no": "07", "judul": "Takhta Kertas", "status": "coming"}, {"no": "08", "judul": "Debu Emas", "status": "coming"}, {"no": "09", "judul": "Pintu Terakhir", "status": "coming"}], "editable_by": "Fina"}, {"id": 4, "title": "Final", "babs": [{"no": "10", "judul": "Perpustakaan Tanpa Pintu", "status": "coming"}, {"no": "11", "judul": "Epilog", "status": "coming"}, {"no": "12", "judul": "End Credit", "status": "coming"}], "editable_by": "Fina"}]};
+const FALLBACK = {"project": "PERPUSTAKAAN TANPA PINTU", "seasons": [{"id": 1, "title": "Sebelum Semuanya Terulang", "desc": "Iterasi 4.129.804 - penjaga mulut dijahit", "visible": true, "babs": [{"no": "01", "slug": "season-1-bab-01", "judul": "Yang Tak Seharusnya Terucap", "status": "ready"}, {"no": "02", "slug": "season-1-bab-02", "judul": "Yang Tiada Ujung", "status": "ready"}, {"no": "03", "slug": "season-1-bab-03", "judul": "Hari Ini, Sekarang, Baru Saja", "status": "ready"}], "editable_by": "Fina"}, {"id": 2, "title": "PINTU YANG PULANG", "desc": "Bab 01-09 dari data.json - semua dibaca live", "visible": true, "babs": [{"no": "01", "slug": "season-2-bab-01", "judul": "Yang Tak Seharusnya Terucap", "status": "ready"}, {"no": "02", "slug": "season-2-bab-02", "judul": "Yang Tiada Ujung", "status": "ready"}, {"no": "03", "slug": "season-2-bab-03", "judul": "Hari Ini, Sekarang, Baru Saja", "status": "ready"}, {"no": "04", "slug": "season-2-bab-04", "judul": "Serigala Penjaga", "status": "coming"}, {"no": "05", "slug": "season-2-bab-05", "judul": "Kertas Melayang", "status": "coming"}, {"no": "06", "slug": "season-2-bab-06", "judul": "Halo Ratu", "status": "coming"}, {"no": "07", "slug": "season-2-bab-07", "judul": "Takhta Kertas", "status": "coming"}, {"no": "08", "slug": "season-2-bab-08", "judul": "Debu Emas", "status": "coming"}, {"no": "09", "slug": "season-2-bab-09", "judul": "Pintu Terakhir", "status": "coming"}], "editable_by": "Fina"}, {"id": 3, "title": "Ratu Perpustakaan", "visible": true, "babs": [{"no": "10", "judul": "Perpustakaan Tanpa Pintu", "status": "coming"}, {"no": "11", "judul": "Epilog", "status": "coming"}, {"no": "12", "judul": "End Credit", "status": "coming"}], "editable_by": "Fina"}]};
 function render(data, src){
-  const c=document.getElementById('seasons'); c.innerHTML='';
-  data.seasons.forEach(s=>{
-    let g=''; s.babs.forEach(b=>{
+  const container=document.getElementById('seasons');
+  const nav=document.getElementById('navgrid');
+  container.innerHTML=''; nav.innerHTML='';
+  // filter hanya visible != false
+  const visibleSeasons = data.seasons.filter(s=>s.visible!==false);
+  visibleSeasons.forEach(s=>{
+    let grid=''; s.babs.forEach(b=>{
       const st=b.status||'coming'; const cls=st==='ready'?'bab active':'bab coming';
       const slug=b.slug||`season-${s.id}-bab-${b.no}`; const tag=b.img||st;
-      if(st==='ready') g+=`<a href="${slug}.html" class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
-      else g+=`<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
+      if(st==='ready') grid+=`<a href="${slug}.html" class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
+      else grid+=`<a class="${cls}">Bab ${b.no} - ${b.judul}<span class="tag">${tag}</span></a>`;
     });
     let desc=s.desc||''; if(s.id===1) desc=s.babs.map(b=>`Bab ${b.no}: ${b.judul}`).join(' • ');
-    c.innerHTML+=`<div class="season" id="season${s.id}"><h2>SEASON ${s.id} - ${s.title}</h2>${desc?`<p class="desc">${desc}</p>`:''}<div class="bab-grid">${g}</div></div>`;
+    container.innerHTML+=`<div class="season" id="season${s.id}"><h2>SEASON ${s.id} - ${s.title}</h2>${desc?`<p class="desc">${desc}</p>`:''}<div class="bab-grid">${grid}</div></div>`;
+    // nav
+    const readyCount = s.babs.filter(b=>b.status==='ready').length;
+    nav.innerHTML+=`<a href="#season${s.id}" class="nav-card"><h3>📖 SEASON ${s.id}</h3><p>${s.title} • ${readyCount} ready / ${s.babs.length} bab</p></a>`;
   });
-  if(data.seasons[0]) document.getElementById('nav-s1').textContent=data.seasons[0].babs.filter(b=>b.status==='ready').length+' bab ready - '+data.seasons[0].title;
-  if(data.seasons[1]) document.getElementById('nav-s2').textContent=data.seasons[1].title+' - '+data.seasons[1].babs.length+' bab soon';
-  if(data.seasons[2]) document.getElementById('nav-s3').textContent=data.seasons[2].title;
-  document.getElementById('foot').textContent=`Loaded dari ${src} • © 2026`;
+  document.getElementById('foot').textContent=`Loaded dari ${src} • Season 4 hidden • ${visibleSeasons.length} seasons`;
 }
 async function init(){
   try{
     const r=await fetch('./data.json'); if(!r.ok) throw new Error(r.status);
-    const j=await r.json(); render(j,'data.json (live)');
-  }catch(e){ render(FALLBACK,'fallback (data.json gagal - cek Brave Shield)'); }
+    const j=await r.json(); render(j,'data.json LIVE');
+  }catch(e){
+    console.log('fallback karena', e);
+    render(FALLBACK,'FALLBACK (data.json gagal)');
+  }
 }
 init();
 </script>
