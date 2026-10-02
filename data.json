@@ -31,61 +31,13 @@
     {
       "id": 2,
       "title": "Pintu Yang Pulang",
-      "desc": "Season 2 — 9 Bab | Final",
+      "desc": "Season 2 — 1 Bab | Percobaan Animasi",
       "visible": true,
       "babs": [
         {
           "no": "01",
           "slug": "season-2-bab-01",
           "judul": "Noda Yang Tidak Mau Luntur",
-          "status": "ready"
-        },
-        {
-          "no": "02",
-          "slug": "season-2-bab-02",
-          "judul": "Penghuni Yang Lupa Nama",
-          "status": "ready"
-        },
-        {
-          "no": "03",
-          "slug": "season-2-bab-03",
-          "judul": "Perpustakaan Tanpa Luar",
-          "status": "ready"
-        },
-        {
-          "no": "04",
-          "slug": "season-2-bab-04",
-          "judul": "Bayangan Di Ujung Lorong",
-          "status": "ready"
-        },
-        {
-          "no": "05",
-          "slug": "season-2-bab-05",
-          "judul": "Yang Ingat Nama",
-          "status": "ready"
-        },
-        {
-          "no": "06",
-          "slug": "season-2-bab-06",
-          "judul": "Pasar Yang Lupa Cara Jualan",
-          "status": "ready"
-        },
-        {
-          "no": "07",
-          "slug": "season-2-bab-07",
-          "judul": "Harga Sebuah Ingatan",
-          "status": "ready"
-        },
-        {
-          "no": "08",
-          "slug": "season-2-bab-08",
-          "judul": "Tinta Yang Menagih Janji",
-          "status": "ready"
-        },
-        {
-          "no": "09",
-          "slug": "season-2-bab-09",
-          "judul": "Jalan Pulang Yang Lupa Arah",
           "status": "ready"
         }
       ],
