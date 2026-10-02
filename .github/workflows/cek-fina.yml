@@ -7,8 +7,11 @@ on:
       - 'data.json'
       - '*.html'
       - '*.jpg'
+      - '*.JPG'
       - '*.jpeg'
+      - '*.JPEG'
       - '*.png'
+      - '*.PNG'
       - '.github/workflows/cek-fina.yml'
   pull_request:
     branches: [ main ]
