@@ -1,0 +1,123 @@
+name: Cek Fina - Auto Safety V2
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'data.json'
+      - '*.html'
+      - '*.jpg'
+      - '*.jpeg'
+      - '*.png'
+      - '.github/workflows/cek-fina.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  cek-fina:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 1. Cek data.json VALID JSON
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          try {
+            JSON.parse(fs.readFileSync('data.json', 'utf8'));
+            console.log('🟢 data.json = VALID JSON');
+          } catch (error) {
+            console.error('🔴 data.json = INVALID JSON');
+            console.error(error.message);
+            process.exit(1);
+          }
+          NODE
+
+      - name: 2. Cek JPG vs jpg (THE 4 DAY BUG)
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          let fail = false;
+          const files = fs.readdirSync('.');
+          const uppercaseFiles = files.filter(file =>
+            /\.(JPG|JPEG|PNG)$/.test(file)
+          );
+          if (uppercaseFiles.length > 0) {
+            console.error('🔴 File dengan ekstensi uppercase ditemukan:');
+            uppercaseFiles.forEach(file => console.error(`   - ${file}`));
+            fail = true;
+          }
+          const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+          const images = data.gallery?.images || [];
+          const uppercaseRefs = images.filter(img =>
+            /\.(JPG|JPEG|PNG)$/.test(img.file || '')
+          );
+          if (uppercaseRefs.length > 0) {
+            console.error('🔴 Referensi gambar uppercase ditemukan di data.json:');
+            uppercaseRefs.forEach(img => console.error(`   - ${img.file}`));
+            fail = true;
+          }
+          if (fail) {
+            console.error('🔴 THE 4 DAY BUG DETECTED');
+            process.exit(1);
+          }
+          console.log('🟢 Tidak ditemukan ekstensi JPG/JPEG/PNG uppercase');
+          NODE
+
+      - name: 3. Cek slug lowercase + tanpa spasi
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+          let totalBab = 0;
+          let fail = false;
+          for (const season of data.seasons || []) {
+            for (const bab of season.babs || []) {
+              totalBab++;
+              const slug = bab.slug || '';
+              if (slug !== slug.toLowerCase()) {
+                console.error(`🔴 Slug uppercase: ${slug}`);
+                fail = true;
+              }
+              if (slug.includes(' ')) {
+                console.error(`🔴 Slug mengandung spasi: ${slug}`);
+                fail = true;
+              }
+            }
+          }
+          console.log(`📚 Total bab REAL: ${totalBab}`);
+          if (fail) {
+            console.error('🔴 Pemeriksaan slug gagal');
+            process.exit(1);
+          }
+          console.log('🟢 Semua slug lowercase dan tanpa spasi');
+          NODE
+
+      - name: 4. Cek gambar - WARNING saja
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+          const images = data.gallery?.images || [];
+          let missing = 0;
+          for (const img of images) {
+            const file = img.file;
+            if (!file) continue;
+            if (!fs.existsSync(file)) {
+              console.warn(`⚠️ Gambar belum tersedia: ${file}`);
+              missing++;
+            }
+          }
+          if (missing === 0) {
+            console.log('🟢 Semua gambar di data.json tersedia');
+          } else {
+            console.warn(`⚠️ ${missing} gambar belum tersedia`);
+            console.warn('🟢 Tetap PASS — gambar yang belum lahir bukan error fatal');
+          }
+          NODE
