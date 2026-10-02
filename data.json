@@ -37,7 +37,7 @@
         {
           "no": "01",
           "slug": "season-2-bab-01",
-          "judul": "Noda Yang Tidak Mau Tidur",
+          "judul": "Noda Yang Tidak Mau Luntur",
           "status": "ready"
         },
         {
@@ -135,6 +135,75 @@
         }
       ],
       "editable_by": "Fina"
+    },
+    {
+      "id": 4,
+      "title": "Gelang Yang Mengingat",
+      "desc": "Season 4 — 12 Bab | Dalam Pengembangan",
+      "visible": true,
+      "babs": [
+        {
+          "no": "01",
+          "judul": "SUARA YANG MENUNGGU",
+          "status": "coming"
+        },
+        {
+          "no": "02",
+          "judul": "DI UJUNG PENCARIAN",
+          "status": "coming"
+        },
+        {
+          "no": "03",
+          "judul": "YANG TERSISA DI GUDANG",
+          "status": "coming"
+        },
+        {
+          "no": "04",
+          "judul": "SUARA DARI DALAM",
+          "status": "coming"
+        },
+        {
+          "no": "05",
+          "judul": "SUARA YANG TAHU NAMAKU",
+          "status": "coming"
+        },
+        {
+          "no": "06",
+          "judul": "JANGAN PULANG DULU",
+          "status": "coming"
+        },
+        {
+          "no": "07",
+          "judul": "YANG TIDAK PERNAH HILANG",
+          "status": "coming"
+        },
+        {
+          "no": "08",
+          "judul": "PERMAINAN YANG SUDAH PERNAH DIMENANGKAN",
+          "status": "coming"
+        },
+        {
+          "no": "09",
+          "judul": "YANG PERNAH DIBUKA",
+          "status": "coming"
+        },
+        {
+          "no": "10",
+          "judul": "YANG TERTINGGAL",
+          "status": "coming"
+        },
+        {
+          "no": "11",
+          "judul": "YANG SUDAH DITULIS",
+          "status": "coming"
+        },
+        {
+          "no": "12",
+          "judul": "PULANG",
+          "status": "coming"
+        }
+      ],
+      "editable_by": "Fina"
     }
   ],
   "gallery": {
@@ -189,6 +258,22 @@
       {
         "file": "cover.jpg",
         "label": "cover.jpg"
+      },
+      {
+        "file": "season-1.jpg",
+        "label": "Season 1 - PERPUSTAKAAN TANPA PINTU"
+      },
+      {
+        "file": "season-2.jpg",
+        "label": "Season 2 - PINTU YANG PULANG"
+      },
+      {
+        "file": "season-3.jpg",
+        "label": "Season 3 - TAGIHAN ITERASI"
+      },
+      {
+        "file": "season-4.jpg",
+        "label": "Season 4 - GELANG YANG MENGINGAT"
       }
     ]
   }
