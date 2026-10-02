@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cek Fina — Pos Satpam</title>
+<style>
+:root{color-scheme:dark;--bg:#080b10;--card:#111720;--line:#26303d;--text:#f2f5f8;--muted:#9aa6b5;--green:#35d07f;--red:#ff5b61;--yellow:#ffc857}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#172131 0,#080b10 48%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+.wrap{max-width:720px;margin:auto;padding:20px 15px 36px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}.brand{font-size:24px;font-weight:800}.sub{color:var(--muted);font-size:13px;margin-top:3px}
+button{border:1px solid var(--line);background:#151d28;color:var(--text);padding:10px 13px;border-radius:12px;font-weight:700}button:active{transform:scale(.98)}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:14px}.lamp{font-size:42px;line-height:1}.hero h1{margin:8px 0 5px;font-size:25px}.hero p{margin:0;color:var(--muted);line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.check{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px}.check .icon{font-size:25px}.check b{display:block;margin:7px 0 3px}.check span{font-size:12px;color:var(--muted);line-height:1.4}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.panel h2{font-size:16px;margin:0 0 10px}.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}.row:last-child{border-bottom:0}.ok{color:var(--green)}.warn{color:var(--yellow)}.bad{color:var(--red)}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#missing{max-height:220px;overflow:auto;color:var(--muted);font-size:12px;line-height:1.65}.foot{color:var(--muted);font-size:11px;text-align:center;margin-top:18px}
+@media(max-width:430px){.grid{grid-template-columns:1fr}.brand{font-size:21px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <div><div class="brand">🛡️ CEK FINA</div><div class="sub">Pos Satpam • Auto Safety V2</div></div>
+    <button id="refresh">↻ Cek Lagi</button>
+  </div>
+
+  <section class="hero">
+    <div class="lamp" id="lamp">⏳</div>
+    <h1 id="headline">Sedang memeriksa…</h1>
+    <p id="summary">Membaca <span class="mono">data.json</span> dan struktur file situs.</p>
+  </section>
+
+  <section class="grid">
+    <div class="check"><div class="icon" id="jsonIcon">⏳</div><b>data.json</b><span id="jsonText">Memeriksa validitas JSON…</span></div>
+    <div class="check"><div class="icon" id="extIcon">⏳</div><b>JPG vs jpg</b><span id="extText">Mencari ekstensi uppercase…</span></div>
+    <div class="check"><div class="icon" id="slugIcon">⏳</div><b>Slug</b><span id="slugText">Memeriksa lowercase + spasi…</span></div>
+    <div class="check"><div class="icon" id="imgIcon">⏳</div><b>Arsip gambar</b><span id="imgText">Mengecek file yang belum lahir…</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>📚 Isi data.json</h2>
+    <div class="row"><span>Total season</span><strong id="seasons">—</strong></div>
+    <div class="row"><span>Total bab</span><strong id="babs">—</strong></div>
+    <div class="row"><span>Bab ready</span><strong id="ready">—</strong></div>
+    <div class="row"><span>Bab coming</span><strong id="coming">—</strong></div>
+    <div class="row"><span>Gambar terdaftar</span><strong id="imageTotal">—</strong></div>
+  </section>
+
+  <section class="panel" id="missingPanel" hidden>
+    <h2>⚠️ Gambar belum lahir</h2>
+    <div id="missing"></div>
+  </section>
+
+  <div class="foot">Data dibaca langsung dari repository • Dashboard tidak mengubah data.json</div>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const setCheck=(icon,text,kind,emoji)=>{$(icon).textContent=emoji;$('text').className=kind;};
+
+async function check(){
+  $('lamp').textContent='⏳'; $('headline').textContent='Sedang memeriksa…'; $('summary').textContent='Membaca data.json dan struktur file.';
+  try{
+    const res=await fetch('data.json?cek='+Date.now(),{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+
+    const seasons=Array.isArray(data.seasons)?data.seasons:[];
+    const babs=seasons.flatMap(s=>Array.isArray(s.babs)?s.babs:[]);
+    const images=data.gallery&&Array.isArray(data.gallery.images)?data.gallery.images:[];
+
+    $('seasons').textContent=seasons.length;
+    $('babs').textContent=babs.length;
+    $('ready').textContent=babs.filter(b=>b.status==='ready').length;
+    $('coming').textContent=babs.filter(b=>b.status==='coming').length;
+    $('imageTotal').textContent=images.length;
+
+    $('jsonIcon').textContent='🟢'; $('jsonText').textContent='VALID JSON'; $('jsonText').className='ok';
+
+    const uppercaseFiles=await Promise.resolve((await Promise.all(
+      images.map(async img=>{
+        const file=img.file||'';
+        return /\.(JPG|JPEG|PNG)$/.test(file)?file:null;
+      })
+    )).filter(Boolean));
+    const rootUpper=[];
+
+    // The browser cannot inspect a directory listing. Image references in data.json are checked here.
+    const uppercaseRefs=uppercaseFiles;
+    const extFail=uppercaseRefs.length>0;
+    $('extIcon').textContent=extFail?'🔴':'🟢';
+    $('extText').textContent=extFail?uppercaseRefs.length+' referensi uppercase ditemukan':'Tidak ada ekstensi uppercase di data.json';
+    $('extText').className=extFail?'bad':'ok';
+
+    const badSlugs=babs.filter(b=>{
+      const slug=b.slug||'';
+      return slug!==slug.toLowerCase()||slug.includes(' ');
+    });
+    const missingSlug=babs.filter(b=>!b.slug);
+    const slugFail=badSlugs.length>0;
+    $('slugIcon').textContent=slugFail?'🔴':'🟢';
+    $('slugText').textContent=slugFail?badSlugs.length+' slug bermasalah':(babs.length-missingSlug.length)+' slug valid; '+missingSlug.length+' bab coming tanpa slug';
+    $('slugText').className=slugFail?'bad':'ok';
+
+    const missing=[];
+    for(const img of images){
+      const file=img.file;
+      if(!file) continue;
+      try{
+        const r=await fetch(file+'?cek='+Date.now(),{method:'HEAD',cache:'no-store'});
+        if(!r.ok) missing.push(file);
+      }catch(e){missing.push(file);}
+    }
+    $('imgIcon').textContent=missing.length?'🟡':'🟢';
+    $('imgText').textContent=missing.length?missing.length+' gambar belum tersedia • WARNING':'Semua gambar tersedia';
+    $('imgText').className=missing.length?'warn':'ok';
+    $('missingPanel').hidden=!missing.length;
+    $('missing').innerHTML=missing.map(x=>'• <span class="mono">'+x+'</span>').join('<br>');
+
+    const fatal=extFail||slugFail;
+    $('lamp').textContent=fatal?'🔴':'🟢';
+    $('headline').textContent=fatal?'SATPAM MENEMUKAN MASALAH':'POS SATPAM AMAN';
+    $('summary').textContent=fatal?'Ada pemeriksaan struktural yang gagal. Cek detail di bawah.':(missing.length?'Struktur aman. Ada '+missing.length+' gambar yang belum lahir — WARNING saja.':'Semua pemeriksaan aman.');
+  }catch(err){
+    $('lamp').textContent='🔴'; $('headline').textContent='GAGAL MEMBACA DATA';
+    $('summary').textContent=err.message;
+    $('jsonIcon').textContent='🔴'; $('jsonText').textContent='INVALID / tidak bisa dibaca'; $('jsonText').className='bad';
+  }
+}
+$('refresh').addEventListener('click',check);
+check();
+</script>
+</body>
+</html>
