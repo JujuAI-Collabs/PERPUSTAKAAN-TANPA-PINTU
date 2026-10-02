@@ -6,339 +6,45 @@
 <title>Bab 01 - Noda Yang Tidak Mau Tidur - PERPUSTAKAAN TANPA PINTU</title>
 <style>
 :root{--bg:#0a0a0d;--card:#17171e;--card2:#1e1e28;--gold:#f5c16c;--text:#e8e6e3;--muted:#9a9a9e;--line:#2a2a36}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.9;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 30%,rgba(245,193,108,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(125,211,255,.06) 0%,transparent 60%);animation:bgMove 16s ease-in-out infinite alternate}
-@keyframes bgMove{0%{transform:scale(1)}100%{transform:scale(1.1)}}
-.nav{max-width:800px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.nav a{color:var(--gold);text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:9px;background:var(--card2);font-size:.85rem;transition:.2s}.nav a:hover{border-color:var(--gold);transform:translateY(-1px)}.nav a.next{background:linear-gradient(135deg,#2a251e,#3a3020);border-color:rgba(245,193,108,.35);font-weight:bold}.nav-right{display:flex;gap:8px}
-article{max-width:740px;margin:18px auto 30px;padding:28px 24px 30px;background:var(--card);border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.4)}
-h1{color:var(--gold);font-size:1.45rem;letter-spacing:.8px;margin:0 0 4px;text-align:center}.season-label{text-align:center;color:var(--muted);font-size:.78rem;letter-spacing:2px;margin-bottom:18px}p{text-align:left;margin:0 0 1.35em;line-height:1.95;font-size:1.02rem}strong{color:#ffe4a8;font-weight:700}em{color:#c9b896;font-style:italic}.bersambung{text-align:center;margin:38px 0 18px;padding:18px;border-top:1px dashed rgba(245,193,108,.25);border-bottom:1px dashed rgba(245,193,108,.25);font-size:1.1rem;letter-spacing:1px;color:var(--gold);font-weight:bold}.bersambung a{color:var(--gold);text-decoration:none;border:1px solid rgba(245,193,108,.3);padding:8px 18px;border-radius:10px;background:var(--card2);display:inline-block;margin-top:10px}@media(max-width:600px){article{padding:20px 18px}p{font-size:1rem;line-height:1.85}h1{font-size:1.25rem}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.9;overflow-x:hidden;position:relative}
+body::before{content:"";position:fixed;inset:-8%;z-index:-3;pointer-events:none;background:radial-gradient(ellipse at 20% 28%,rgba(245,193,108,.085),transparent 52%),radial-gradient(ellipse at 80% 72%,rgba(125,170,205,.065),transparent 54%);animation:ptpBg 20s ease-in-out infinite alternate}
+body::after{content:"";position:fixed;inset:-18%;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 28% 25%,rgba(220,210,185,.045),transparent 38%),radial-gradient(ellipse at 72% 78%,rgba(90,110,130,.04),transparent 42%);animation:ptpMist 26s ease-in-out infinite alternate}
+@keyframes ptpBg{from{transform:scale(1)}to{transform:scale(1.065)}}@keyframes ptpMist{from{transform:translate3d(-1.5%,-1%,0) scale(1)}to{transform:translate3d(2.5%,2%,0) scale(1.07)}}
+.nav{max-width:800px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.nav a{color:var(--gold);text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:9px;background:var(--card2);font-size:.85rem;transition:border-color .25s ease,transform .25s ease}.nav a:hover{border-color:var(--gold);transform:translateY(-1px)}.nav a.next{background:linear-gradient(135deg,#2a251e,#3a3020);border-color:rgba(245,193,108,.35);font-weight:bold}.nav-right{display:flex;gap:8px}
+article{max-width:740px;margin:18px auto 30px;padding:28px 24px 30px;background:var(--card);border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.4);position:relative;overflow:hidden;isolation:isolate}
+article::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 16% 14%,rgba(245,193,108,.045),transparent 36%),radial-gradient(ellipse at 84% 80%,rgba(100,125,145,.035),transparent 40%);animation:ptpArticle 16s ease-in-out infinite alternate}
+article::after{content:"";position:absolute;z-index:1;top:-20%;left:-30%;width:16%;height:140%;pointer-events:none;transform:skewX(-12deg);background:linear-gradient(90deg,transparent,rgba(255,244,210,.65),transparent);opacity:0;animation:ptpSheen 17s ease-in-out infinite}
+@keyframes ptpArticle{from{transform:scale(1)}to{transform:scale(1.035)}}@keyframes ptpSheen{0%,58%{left:-30%;opacity:0}67%{opacity:.075}78%,100%{left:118%;opacity:0}}
+article>*{position:relative;z-index:2}
+h1{color:var(--gold);font-size:1.45rem;letter-spacing:.8px;margin:0 0 4px;text-align:center}.season-label{text-align:center;color:var(--muted);font-size:.78rem;letter-spacing:2px;margin-bottom:18px}p{text-align:left;margin:0 0 1.35em;line-height:1.95;font-size:1.02rem}strong{color:#ffe4a8;font-weight:700}em{color:#c9b896;font-style:italic}.dialogue{padding-left:1rem;border-left:2px solid rgba(245,193,108,.24);font-style:italic;color:#d8ccb4}
+.bersambung{text-align:center;margin:38px 0 18px;padding:18px;border-top:1px dashed rgba(245,193,108,.25);border-bottom:1px dashed rgba(245,193,108,.25);font-size:1.1rem;letter-spacing:1px;color:var(--gold);font-weight:bold}.bersambung a{color:var(--gold);text-decoration:none;border:1px solid rgba(245,193,108,.3);padding:8px 18px;border-radius:10px;background:var(--card2);display:inline-block;margin-top:10px}
+.ptp-reveal{opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.7,.25,1)}.ptp-reveal.show{opacity:1;transform:none}
+.ptp-ripple{position:fixed;width:24px;height:24px;border:1px solid rgba(245,193,108,.48);border-radius:50%;pointer-events:none;z-index:30;transform:translate(-50%,-50%) scale(.25);animation:ptpRipple .8s ease-out forwards}@keyframes ptpRipple{to{transform:translate(-50%,-50%) scale(4.8);opacity:0}}
+#ptpScrollGlow{position:fixed;left:0;right:0;bottom:0;height:2px;transform-origin:left center;transform:scaleX(0);background:linear-gradient(90deg,transparent,rgba(205,180,115,.62),transparent);opacity:.65;pointer-events:none;z-index:30}
+@media(max-width:700px){article{padding:20px 18px}p{font-size:1rem;line-height:1.85}h1{font-size:1.25rem}article::after{display:none}body::before{animation-duration:24s}body::after{animation-duration:30s}.ptp-reveal{transform:translateY(9px);transition-duration:.6s}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body::before,body::after,article::before,article::after{animation:none}.ptp-reveal{opacity:1;transform:none;transition:none}}
 </style>
-<style>
-/* INTERAKSI RINGAN — PTP Reader */
-html{scroll-behavior:smooth}
-body{position:relative}
-body::after{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 30% 20%,rgba(210,220,235,.035),transparent 38%),radial-gradient(ellipse at 70% 80%,rgba(80,100,120,.035),transparent 42%);animation:mistDrift 24s ease-in-out infinite alternate}
-@keyframes mistDrift{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.08)}}
-article{position:relative;overflow:hidden}
-article::before{content:"";position:absolute;left:-30%;right:-30%;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(245,193,108,.28),transparent);transform:translateX(-60%);animation:surfaceGlint 9s ease-in-out infinite}
-@keyframes surfaceGlint{0%,55%{transform:translateX(-60%);opacity:0}65%{opacity:1}100%{transform:translateX(60%);opacity:0}}
-.reveal{opacity:0;transform:translateY(12px);transition:opacity .65s ease,transform .65s ease}
-.reveal.show{opacity:1;transform:none}
-.dialogue{padding-left:1rem;border-left:2px solid rgba(245,193,108,.22);font-style:italic;color:#d8ccb4}
-.ripple{position:fixed;width:18px;height:18px;border:1px solid rgba(245,193,108,.55);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%) scale(.25);animation:ripple .75s ease-out forwards;z-index:20}
-@keyframes ripple{to{transform:translate(-50%,-50%) scale(5);opacity:0}}
-#scrollGlow{position:fixed;left:0;top:0;width:2px;height:0;background:rgba(245,193,108,.55);z-index:30;box-shadow:0 0 8px rgba(245,193,108,.25)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body::before,body::after,article::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
-</style>
-<div id="scrollGlow" aria-hidden="true"></div>
 <script>
 (function(){
- const article=document.querySelector('article');
- if(!article)return;
- const ps=[...article.querySelectorAll('p')];
- ps.forEach((p,i)=>{p.classList.add('reveal');p.style.transitionDelay=Math.min(i*18,180)+'ms';});
- if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -5% 0px'});
-  ps.forEach(p=>io.observe(p));
- }else ps.forEach(p=>p.classList.add('show'));
- const bar=document.getElementById('scrollGlow');
- const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;bar.style.height=(max>0?(scrollY/max)*100:0)+'vh'};
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const targets=[...document.querySelectorAll('article p')];
+ targets.forEach(p=>p.classList.add('ptp-reveal'));
+ if(!reduce&&'IntersectionObserver' in window){
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.07,rootMargin:'0px 0px -5% 0px'});
+  targets.forEach((p,i)=>{p.style.transitionDelay=Math.min(i*12,120)+'ms';io.observe(p)});
+ }else targets.forEach(p=>p.classList.add('show'));
+ const bar=document.getElementById('ptpScrollGlow');
+ const update=()=>{if(!bar)return;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);bar.style.transform='scaleX('+Math.min(1,Math.max(0,scrollY/max))+')'};
  addEventListener('scroll',update,{passive:true});update();
- addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.pointerType==='mouse'){const r=document.createElement('span');r.className='ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.appendChild(r);setTimeout(()=>r.remove(),800)}},{passive:true});
+ if(!reduce)addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;const r=document.createElement('span');r.className='ptp-ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.append(r);setTimeout(()=>r.remove(),850)},{passive:true});
 })();
-</script>
-<style>
-
-/* === PTP INTERACTIVE READER — STANDARD WOW TEST === */
-:root{
-  --scroll-y:0;
-  --mist-x:0px;
-  --mist-y:0px;
-}
-body{
-  overflow-x:hidden;
-}
-.ptp-atmosphere{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  overflow:hidden;
-  background:
-    radial-gradient(ellipse at 50% 105%, rgba(120,92,40,.13), transparent 48%),
-    radial-gradient(ellipse at 10% 25%, rgba(255,255,255,.035), transparent 38%);
-}
-.ptp-mist{
-  position:absolute;
-  width:75vw;
-  height:32vh;
-  border-radius:50%;
-  filter:blur(22px);
-  opacity:.16;
-  background:radial-gradient(ellipse, rgba(210,190,145,.25), transparent 68%);
-  transform:translate3d(var(--mist-x),var(--mist-y),0);
-  will-change:transform;
-}
-.ptp-mist.one{
-  left:-20vw; top:18vh;
-  animation:ptpMistOne 18s ease-in-out infinite alternate;
-}
-.ptp-mist.two{
-  right:-30vw; top:58vh;
-  opacity:.11;
-  animation:ptpMistTwo 23s ease-in-out infinite alternate;
-}
-@keyframes ptpMistOne{
-  from{transform:translate3d(-5vw,0,0) scale(1)}
-  to{transform:translate3d(28vw,5vh,0) scale(1.12)}
-}
-@keyframes ptpMistTwo{
-  from{transform:translate3d(8vw,0,0) scale(1)}
-  to{transform:translate3d(-22vw,-4vh,0) scale(1.16)}
-}
-.ptp-ink-wave{
-  position:fixed;
-  left:50%;
-  top:50%;
-  width:18vw;
-  height:18vw;
-  min-width:110px;
-  min-height:110px;
-  border:1px solid rgba(190,170,120,.24);
-  border-radius:50%;
-  opacity:0;
-  pointer-events:none;
-  transform:translate(-50%,-50%) scale(.35);
-  box-shadow:0 0 28px rgba(160,130,70,.08), inset 0 0 22px rgba(160,130,70,.04);
-}
-.ptp-ink-wave.active{
-  animation:ptpRipple .85s cubic-bezier(.16,.8,.25,1);
-}
-@keyframes ptpRipple{
-  0%{opacity:.55;transform:translate(-50%,-50%) scale(.25)}
-  65%{opacity:.24}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(2.5)}
-}
-.ptp-sheen{
-  position:fixed;
-  left:-30%;
-  top:0;
-  width:22%;
-  height:100%;
-  pointer-events:none;
-  opacity:.055;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent);
-  transform:skewX(-12deg);
-  animation:ptpSheen 14s ease-in-out infinite;
-}
-@keyframes ptpSheen{
-  0%,55%{left:-30%}
-  100%{left:115%}
-}
-article p, article blockquote, article h2, article h3{
-  opacity:0;
-  transform:translateY(16px);
-  transition:opacity .65s ease, transform .65s ease, text-shadow .65s ease;
-}
-article .ptp-visible{
-  opacity:1;
-  transform:none;
-}
-article .ptp-dialogue{
-  padding-left:1.1rem;
-  margin-left:.15rem;
-  border-left:2px solid rgba(190,160,90,.28);
-  font-style:italic;
-}
-article .ptp-dialogue.ptp-visible{
-  text-shadow:0 0 18px rgba(190,160,90,.10);
-}
-.ptp-scroll-glow{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  height:2px;
-  transform-origin:left center;
-  transform:scaleX(0);
-  background:linear-gradient(90deg,transparent,rgba(205,180,115,.6),transparent);
-  opacity:.6;
-  pointer-events:none;
-  z-index:20;
-}
-@media (max-width:700px){
-  .ptp-mist{filter:blur(16px);opacity:.13}
-  .ptp-mist.one{width:110vw}
-  .ptp-mist.two{width:105vw}
-  .ptp-ink-wave{min-width:90px;min-height:90px}
-  article p, article blockquote, article h2, article h3{
-    transform:translateY(10px);
-    transition-duration:.5s;
-  }
-}
-@media (prefers-reduced-motion:reduce){
-  .ptp-mist,.ptp-sheen{animation:none}
-  article p, article blockquote, article h2, article h3{
-    opacity:1;transform:none;transition:none
-  }
-}
-
-</style>
-<style>
-
-/* === PTP READER: INK POOL — EFFECTS INSIDE STORY AREA === */
-article{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-}
-article > *:not(.reader-ink-atmosphere){
-  position:relative;
-  z-index:2;
-}
-.reader-ink-atmosphere{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  overflow:hidden;
-  border-radius:inherit;
-  background:
-    radial-gradient(ellipse at 18% 18%, rgba(190,160,95,.045), transparent 35%),
-    radial-gradient(ellipse at 82% 78%, rgba(90,105,120,.035), transparent 38%);
-}
-.reader-mist{
-  position:absolute;
-  width:68%;
-  height:24%;
-  border-radius:50%;
-  filter:blur(18px);
-  opacity:.20;
-  background:radial-gradient(ellipse, rgba(210,190,145,.22), transparent 68%);
-  will-change:transform;
-}
-.reader-mist-a{
-  left:-28%;
-  top:14%;
-  animation:readerMistA 13s ease-in-out infinite alternate;
-}
-.reader-mist-b{
-  right:-30%;
-  bottom:17%;
-  opacity:.15;
-  animation:readerMistB 17s ease-in-out infinite alternate;
-}
-@keyframes readerMistA{
-  from{transform:translate3d(0,0,0) scale(1)}
-  to{transform:translate3d(72%,8%,0) scale(1.18)}
-}
-@keyframes readerMistB{
-  from{transform:translate3d(0,0,0) scale(1)}
-  to{transform:translate3d(-62%,-10%,0) scale(1.22)}
-}
-.reader-sheen{
-  position:absolute;
-  top:-25%;
-  left:-35%;
-  width:18%;
-  height:150%;
-  transform:skewX(-12deg);
-  opacity:.10;
-  background:linear-gradient(90deg,transparent,rgba(255,244,210,.85),transparent);
-  animation:readerSheen 11s ease-in-out infinite;
-}
-@keyframes readerSheen{
-  0%,45%{left:-35%;opacity:0}
-  55%{opacity:.10}
-  100%{left:120%;opacity:0}
-}
-.reader-ripple{
-  position:absolute;
-  width:46px;
-  height:46px;
-  border:1px solid rgba(205,180,115,.48);
-  border-radius:50%;
-  opacity:0;
-  transform:translate(-50%,-50%) scale(.25);
-  box-shadow:
-    0 0 14px rgba(180,150,80,.12),
-    inset 0 0 12px rgba(180,150,80,.08);
-}
-.reader-ripple.active{
-  animation:readerRipple .9s cubic-bezier(.12,.75,.25,1);
-}
-@keyframes readerRipple{
-  0%{opacity:.72;transform:translate(-50%,-50%) scale(.25)}
-  45%{opacity:.46}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(5.2)}
-}
-@media(max-width:700px){
-  .reader-mist{filter:blur(13px);opacity:.18}
-  .reader-sheen{opacity:.075}
-  .reader-ripple{width:38px;height:38px}
-}
-@media(prefers-reduced-motion:reduce){
-  .reader-mist,.reader-sheen{animation:none}
-}
-
-</style>
-<style>
-
-/* === PTP READER — SMALL NARRATIVE INDENT TEST === */
-article p:not(.ptp-dialogue){
-  text-indent:.8em;
-}
-
-</style>
-
-<style id="ptp-animation-standard-v1">
-/* PTP ANIMATION STANDARD v1 — ringan untuk HP */
-.ptp-v1-mist{position:fixed;inset:-20%;z-index:-2;pointer-events:none;background:
-radial-gradient(ellipse at 18% 25%,rgba(245,193,108,.07),transparent 32%),
-radial-gradient(ellipse at 82% 72%,rgba(100,140,180,.055),transparent 34%);
-animation:ptpV1Float 18s ease-in-out infinite alternate}
-.ptp-v1-sheen{position:fixed;top:-20%;left:-35%;width:18%;height:140%;z-index:20;pointer-events:none;
-transform:skewX(-12deg);opacity:0;background:linear-gradient(90deg,transparent,rgba(255,244,210,.5),transparent);
-animation:ptpV1Sheen 13s ease-in-out infinite}
-@keyframes ptpV1Float{to{transform:translate3d(2%,-1%,0) scale(1.06)}}
-@keyframes ptpV1Sheen{0%,55%{left:-35%;opacity:0}68%{opacity:.07}100%{left:120%;opacity:0}}
-.ptp-v1-reveal{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}
-.ptp-v1-reveal.show{opacity:1;transform:none}
-.ptp-v1-ripple{position:fixed;width:20px;height:20px;border:1px solid rgba(245,193,108,.5);border-radius:50%;
-pointer-events:none;z-index:50;transform:translate(-50%,-50%) scale(.2);animation:ptpV1Ripple .7s ease-out forwards}
-@keyframes ptpV1Ripple{to{transform:translate(-50%,-50%) scale(4.5);opacity:0}}
-@media(max-width:700px){.ptp-v1-sheen{display:none}}
-@media(prefers-reduced-motion:reduce){.ptp-v1-mist,.ptp-v1-sheen{animation:none}.ptp-v1-reveal{opacity:1;transform:none;transition:none}}
-</style>
-<script>
-(function(){
- const m=document.createElement('div');m.className='ptp-v1-mist';document.body.prepend(m);
- const s=document.createElement('div');s.className='ptp-v1-sheen';document.body.append(s);
- const ps=[...document.querySelectorAll('article p')];
- ps.forEach(p=>p.classList.add('ptp-v1-reveal'));
- if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.06});
-  ps.forEach(p=>io.observe(p));
-  addEventListener('pointerdown',e=>{
-   if(e.pointerType!=='touch'&&e.pointerType!=='mouse')return;
-   const r=document.createElement('i');r.className='ptp-v1-ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';
-   document.body.append(r);setTimeout(()=>r.remove(),750);
-  },{passive:true});
- }else ps.forEach(p=>p.classList.add('show'));
-})();
-</script>
-</head>
+</script></head>
 <body>
-<div class="ptp-atmosphere"><div class="ptp-mist one"></div><div class="ptp-mist two"></div></div><div class="ptp-sheen"></div><div class="ptp-ink-wave"></div><div class="ptp-scroll-glow"></div>
+<div id="ptpScrollGlow" aria-hidden="true"></div>
 <div class="nav top"><a href="index.html">← Daftar Isi</a><div class="nav-right"><a href="season-2-bab-02.html" class="next">Bab 02: Penghuni Yang Lupa Nama →</a></div></div>
 <article>
-
-<div class="reader-ink-atmosphere" aria-hidden="true">
-  <div class="reader-mist reader-mist-a"></div>
-  <div class="reader-mist reader-mist-b"></div>
-  <div class="reader-sheen"></div>
-  <div class="reader-ripple"></div>
-</div>
 
 <div class="season-label">SEASON 2 • Pintu Yang Pulang</div>
 <h1>BAB 1 — NODA YANG TIDAK MAU TIDUR</h1>
@@ -394,106 +100,8 @@ pointer-events:none;z-index:50;transform:translate(-50%,-50%) scale(.2);animatio
 </article>
 <div class="nav"><a href="index.html">← Daftar Isi</a><div class="nav-right"><a href="season-2-bab-02.html" class="next">Bab 02: Penghuni Yang Lupa Nama →</a></div></div>
 
-<script>
-(() => {
-  const root = document.documentElement;
-  const wave = document.querySelector('.ptp-ink-wave');
-  const glow = document.querySelector('.ptp-scroll-glow');
-
-  // Reader enters gently instead of dumping the whole page at once.
-  const targets = document.querySelectorAll('article p, article blockquote, article h2, article h3');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('ptp-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, {threshold: .08, rootMargin: '0px 0px -5% 0px'});
-    targets.forEach(el => io.observe(el));
-  } else {
-    targets.forEach(el => el.classList.add('ptp-visible'));
-  }
-
-  // A little movement follows the reader's scroll.
-  let ticking = false;
-  function updateScroll(){
-    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-    const y = Math.min(1, Math.max(0, scrollY / max));
-    root.style.setProperty('--scroll-y', y.toFixed(3));
-    const mistX = (y - .5) * 34;
-    const mistY = (y - .5) * 10;
-    root.style.setProperty('--mist-x', mistX.toFixed(1) + 'px');
-    root.style.setProperty('--mist-y', mistY.toFixed(1) + 'px');
-    if (glow) glow.style.transform = 'scaleX(' + y + ')';
-    ticking = false;
-  }
-  addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateScroll);
-      ticking = true;
-    }
-  }, {passive:true});
-  updateScroll();
-
-  // Tap/click = ink ripple. Uses the actual touch/click position.
-  function ripple(x, y){
-    if (!wave) return;
-    wave.style.left = x + 'px';
-    wave.style.top = y + 'px';
-    wave.classList.remove('active');
-    void wave.offsetWidth;
-    wave.classList.add('active');
-  }
-  addEventListener('pointerdown', e => {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    ripple(e.clientX, e.clientY);
-  }, {passive:true});
-})();
-</script>
 
 
-<script>
-(() => {
-  const article = document.querySelector('article');
-  const pool = document.querySelector('.reader-ink-atmosphere');
-  const ripple = document.querySelector('.reader-ripple');
-  if (!article || !pool || !ripple) return;
-
-  function makeRipple(clientX, clientY){
-    const rect = pool.getBoundingClientRect();
-    // Only react when the actual touch/click is inside the story panel.
-    if (
-      clientX < rect.left || clientX > rect.right ||
-      clientY < rect.top || clientY > rect.bottom
-    ) return;
-
-    ripple.style.left = (clientX - rect.left) + 'px';
-    ripple.style.top = (clientY - rect.top) + 'px';
-    ripple.classList.remove('active');
-    void ripple.offsetWidth;
-    ripple.classList.add('active');
-  }
-
-  article.addEventListener('pointerdown', e => {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    makeRipple(e.clientX, e.clientY);
-  }, {passive:true});
-
-  // Slight atmospheric drift follows scroll, but stays inside the article.
-  let raf = 0;
-  addEventListener('scroll', () => {
-    if (raf) return;
-    raf = requestAnimationFrame(() => {
-      const r = article.getBoundingClientRect();
-      const centerOffset = ((innerHeight / 2) - (r.top + r.height / 2)) * .025;
-      pool.style.transform = `translate3d(0, ${centerOffset.toFixed(1)}px, 0)`;
-      raf = 0;
-    });
-  }, {passive:true});
-})();
-</script>
 
 </body>
 </html>
