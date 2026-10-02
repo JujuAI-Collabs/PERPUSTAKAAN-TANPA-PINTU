@@ -31,13 +31,19 @@
     {
       "id": 2,
       "title": "Pintu Yang Pulang",
-      "desc": "Season 2 — 1 Bab | Percobaan Animasi",
+      "desc": "Season 2 — 2 Bab | Percobaan Animasi",
       "visible": true,
       "babs": [
         {
           "no": "01",
           "slug": "season-2-bab-01",
           "judul": "Noda Yang Tidak Mau Tidur",
+          "status": "ready"
+        },
+        {
+          "no": "02",
+          "slug": "season-2-bab-02",
+          "judul": "Penghuni Yang Lupa Nama",
           "status": "ready"
         }
       ],
