@@ -6,20 +6,31 @@
 <title>Bab 02 - Penghuni Yang Lupa Nama - PERPUSTAKAAN TANPA PINTU</title>
 <style>
 :root{--bg:#0a0a0d;--card:#17171e;--card2:#1e1e28;--gold:#f5c16c;--text:#e8e6e3;--muted:#9a9a9e;--line:#2a2a36}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.9;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 30%,rgba(245,193,108,.08),transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(125,211,255,.06),transparent 60%);animation:bgMove 16s ease-in-out infinite alternate}
-@keyframes bgMove{from{transform:scale(1)}to{transform:scale(1.1)}}
-.nav{max-width:800px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.nav a{color:var(--gold);text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:9px;background:var(--card2);font-size:.85rem}.nav a:hover{border-color:var(--gold)}
-article{max-width:740px;margin:18px auto 30px;padding:28px 24px 30px;background:var(--card);border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.4)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.9;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-8%;z-index:-3;background:radial-gradient(ellipse at 20% 30%,rgba(245,193,108,.08),transparent 58%),radial-gradient(ellipse at 80% 70%,rgba(125,211,255,.055),transparent 58%);animation:ptpBg 18s ease-in-out infinite alternate}
+body:after{content:"";position:fixed;inset:-15%;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 20% 50%,rgba(0,0,0,.18),transparent 55%),radial-gradient(ellipse at 80% 45%,rgba(245,193,108,.035),transparent 52%);animation:ptpMist 24s ease-in-out infinite alternate}
+@keyframes ptpBg{from{transform:scale(1)}to{transform:scale(1.07) translate3d(1.5%,-1%,0)}}
+@keyframes ptpMist{from{transform:translate3d(-2%,1%,0) scale(1)}to{transform:translate3d(2%,-1%,0) scale(1.04)}}
+.nav{max-width:800px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.nav a{color:var(--gold);text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:9px;background:var(--card2);font-size:.85rem;transition:border-color .25s ease,transform .25s ease}.nav a:hover{border-color:var(--gold);transform:translateY(-1px)}
+article{position:relative;isolation:isolate;overflow:hidden;max-width:740px;margin:18px auto 30px;padding:28px 24px 30px;background:var(--card);border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.4)}
+article:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 15% 20%,rgba(245,193,108,.045),transparent 42%),radial-gradient(ellipse at 85% 80%,rgba(125,211,255,.035),transparent 45%);animation:ptpArticle 14s ease-in-out infinite alternate}
+article:after{content:"";position:absolute;top:-30%;left:-60%;width:42%;height:160%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(245,193,108,.035),transparent);transform:rotate(10deg);animation:ptpSheen 15s ease-in-out infinite}
+@keyframes ptpArticle{from{transform:translate3d(-1%,0,0)}to{transform:translate3d(1%,1%,0)}}@keyframes ptpSheen{0%,62%{left:-60%;opacity:0}72%{opacity:1}90%,100%{left:125%;opacity:0}}
 h1{color:var(--gold);font-size:1.45rem;letter-spacing:.8px;margin:0 0 4px;text-align:center}.season-label{text-align:center;color:var(--muted);font-size:.78rem;letter-spacing:2px;margin-bottom:18px}
 p{text-align:left;margin:0 0 1.35em;line-height:1.95;font-size:1.02rem;text-indent:.8em}.dialogue{color:#d8ccb4;font-style:italic}strong{color:#ffe4a8;font-weight:700}em{color:#c9b896;font-style:italic}
-.bersambung{text-align:center;margin:38px 0 18px;padding:18px;border-top:1px dashed rgba(245,193,108,.25);border-bottom:1px dashed rgba(245,193,108,.25);font-size:1.1rem;letter-spacing:1px;color:var(--gold);font-weight:bold}.bersambung a{color:var(--gold);text-decoration:none;border:1px solid rgba(245,193,108,.3);padding:8px 18px;border-radius:10px;background:var(--card2);display:inline-block;margin-top:10px}
-.reveal{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}.reveal.show{opacity:1;transform:none}
-@media(max-width:600px){article{padding:20px 18px}p{font-size:1rem;line-height:1.85}}
-@media(prefers-reduced-motion:reduce){body:before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}.reveal.show{opacity:1;transform:none}
+.ptp-ripple{position:fixed;width:18px;height:18px;border:1px solid rgba(245,193,108,.38);border-radius:50%;pointer-events:none;z-index:20;transform:translate(-50%,-50%) scale(.3);animation:ptpRipple .75s ease-out forwards}
+@keyframes ptpRipple{to{transform:translate(-50%,-50%) scale(4.8);opacity:0}}
+#ptpScrollGlow{position:fixed;left:0;bottom:0;width:100%;height:2px;z-index:30;pointer-events:none;background:linear-gradient(90deg,var(--gold) var(--scroll,0%),transparent var(--scroll,0%));opacity:.55}
+.bersambung{text-align:center;margin:38px 0 18px;padding:18px;border-top:1px dashed rgba(245,193,108,.25);border-bottom:1px dashed rgba(245,193,108,.25);font-size:1.1rem;letter-spacing:1px;color:var(--gold);font-weight:bold}.bersambung a{color:var(--gold);text-decoration:none;border:1px solid rgba(245,193,108,.3);padding:8px 18px;border-radius:10px;background:var(--card2);display:inline-block;margin-top:10px;transition:transform .25s ease,border-color .25s ease}.bersambung a:hover{transform:translateY(-1px);border-color:var(--gold)}
+@media(max-width:600px){article{padding:20px 18px}p{font-size:1rem;line-height:1.85}article:after{display:none}body:before{animation-duration:24s}body:after{animation-duration:30s}.ptp-ripple{width:16px;height:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body:before,body:after,article:before,article:after{animation:none}.reveal{opacity:1;transform:none;transition:none}.ptp-ripple{display:none}}
 </style>
 </head>
 <body>
+<div id="ptpScrollGlow" aria-hidden="true"></div>
 <div class="nav"><a href="index.html">← Daftar Isi</a><a href="season-2-bab-01.html">← Bab 01</a></div>
 <article>
 <div class="season-label">SEASON 2 • Pintu Yang Pulang</div>
@@ -65,7 +76,13 @@ p{text-align:left;margin:0 0 1.35em;line-height:1.95;font-size:1.02rem;text-inde
 </article>
 <div class="nav"><a href="index.html">← Daftar Isi</a><a href="season-2-bab-03.html">Bab 03: Perpustakaan Tanpa Luar →</a></div>
 <script>
-(()=>{const ps=[...document.querySelectorAll('article p')];if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.06});ps.forEach(p=>{p.classList.add('reveal');io.observe(p)})}else ps.forEach(p=>p.classList.add('reveal','show'));})();
+(()=> {
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const ps=[...document.querySelectorAll('article p')],glow=document.getElementById('ptpScrollGlow');
+ if(!reduced&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}}),{threshold:.06});ps.forEach(p=>{p.classList.add('reveal');io.observe(p)})}else ps.forEach(p=>p.classList.add('reveal','show'));
+ const scroll=()=>{const max=document.documentElement.scrollHeight-innerHeight;glow.style.setProperty('--scroll',(max>0?scrollY/max*100:0)+'%')};scroll();addEventListener('scroll',scroll,{passive:true});
+ if(!reduced)document.addEventListener('pointerdown',e=>{const r=document.createElement('span');r.className='ptp-ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';document.body.appendChild(r);r.addEventListener('animationend',()=>r.remove(),{once:true})},{passive:true});
+})();
 </script>
 </body>
 </html>
