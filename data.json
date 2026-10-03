@@ -31,7 +31,7 @@
     {
       "id": 2,
       "title": "Pintu Yang Pulang",
-      "desc": "Season 2 — 3 Bab | Percobaan Animasi",
+      "desc": "Season 2 — 9 Bab | Final",
       "visible": true,
       "babs": [
         {
@@ -50,6 +50,42 @@
           "no": "03",
           "slug": "season-2-bab-03",
           "judul": "Perpustakaan Tanpa Luar",
+          "status": "ready"
+        },
+        {
+          "no": "04",
+          "slug": "season-2-bab-04",
+          "judul": "Bayangan Di Ujung Lorong",
+          "status": "ready"
+        },
+        {
+          "no": "05",
+          "slug": "season-2-bab-05",
+          "judul": "Yang Ingat Nama",
+          "status": "ready"
+        },
+        {
+          "no": "06",
+          "slug": "season-2-bab-06",
+          "judul": "Pasar Yang Lupa Cara Jualan",
+          "status": "ready"
+        },
+        {
+          "no": "07",
+          "slug": "season-2-bab-07",
+          "judul": "Harga Sebuah Ingatan",
+          "status": "ready"
+        },
+        {
+          "no": "08",
+          "slug": "season-2-bab-08",
+          "judul": "Tinta Yang Menagih Janji",
+          "status": "ready"
+        },
+        {
+          "no": "09",
+          "slug": "season-2-bab-09",
+          "judul": "Jalan Pulang Yang Lupa Arah",
           "status": "ready"
         }
       ],
@@ -193,31 +229,6 @@
       {
         "file": "05.jpg",
         "label": "05.jpg - Kertas Melayang"
-      },
-      {
-        "file": "06.jpg",
-        "label": "06.jpg - Slot 06 Coming Soon",
-        "status": "coming"
-      },
-      {
-        "file": "07.jpg",
-        "label": "07.jpg - Slot 07 Coming Soon",
-        "status": "coming"
-      },
-      {
-        "file": "08.jpg",
-        "label": "08.jpg - Slot 08 Coming Soon",
-        "status": "coming"
-      },
-      {
-        "file": "09.jpg",
-        "label": "09.jpg - Slot 09 Coming Soon",
-        "status": "coming"
-      },
-      {
-        "file": "10.jpg",
-        "label": "10.jpg - Slot 10 Coming Soon",
-        "status": "coming"
       },
       {
         "file": "cover.jpg",
