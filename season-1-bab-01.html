@@ -50,39 +50,20 @@ em{color:#c9b896;font-style:italic}
 </style>
 
 <style id="ptp-animation-standard-v1">
-/* PTP ANIMATION STANDARD v1 — ringan untuk HP */
-.ptp-v1-mist{position:fixed;inset:-20%;z-index:-2;pointer-events:none;background:
-radial-gradient(ellipse at 18% 25%,rgba(245,193,108,.07),transparent 32%),
-radial-gradient(ellipse at 82% 72%,rgba(100,140,180,.055),transparent 34%);
-animation:ptpV1Float 18s ease-in-out infinite alternate}
-.ptp-v1-sheen{position:fixed;top:-20%;left:-35%;width:18%;height:140%;z-index:20;pointer-events:none;
-transform:skewX(-12deg);opacity:0;background:linear-gradient(90deg,transparent,rgba(255,244,210,.5),transparent);
-animation:ptpV1Sheen 13s ease-in-out infinite}
-@keyframes ptpV1Float{to{transform:translate3d(2%,-1%,0) scale(1.06)}}
-@keyframes ptpV1Sheen{0%,55%{left:-35%;opacity:0}68%{opacity:.07}100%{left:120%;opacity:0}}
-.ptp-v1-reveal{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}
-.ptp-v1-reveal.show{opacity:1;transform:none}
+/* PTP CLICK RIPPLE — ringan untuk HP */
 .ptp-v1-ripple{position:fixed;width:20px;height:20px;border:1px solid rgba(245,193,108,.5);border-radius:50%;
 pointer-events:none;z-index:50;transform:translate(-50%,-50%) scale(.2);animation:ptpV1Ripple .7s ease-out forwards}
 @keyframes ptpV1Ripple{to{transform:translate(-50%,-50%) scale(4.5);opacity:0}}
-@media(max-width:700px){.ptp-v1-sheen{display:none}}
-@media(prefers-reduced-motion:reduce){.ptp-v1-mist,.ptp-v1-sheen{animation:none}.ptp-v1-reveal{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.ptp-v1-ripple{display:none}}
 </style>
 <script>
 (function(){
- const m=document.createElement('div');m.className='ptp-v1-mist';document.body.prepend(m);
- const s=document.createElement('div');s.className='ptp-v1-sheen';document.body.append(s);
- const ps=[...document.querySelectorAll('article p')];
- ps.forEach(p=>p.classList.add('ptp-v1-reveal'));
- if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.06});
-  ps.forEach(p=>io.observe(p));
-  addEventListener('pointerdown',e=>{
-   if(e.pointerType!=='touch'&&e.pointerType!=='mouse')return;
-   const r=document.createElement('i');r.className='ptp-v1-ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';
-   document.body.append(r);setTimeout(()=>r.remove(),750);
-  },{passive:true});
- }else ps.forEach(p=>p.classList.add('show'));
+ addEventListener('pointerdown',e=>{
+  if(e.pointerType!=='touch'&&e.pointerType!=='mouse')return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const r=document.createElement('i');r.className='ptp-v1-ripple';r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';
+  document.body.append(r);setTimeout(()=>r.remove(),750);
+ },{passive:true});
 })();
 </script>
 </head>
