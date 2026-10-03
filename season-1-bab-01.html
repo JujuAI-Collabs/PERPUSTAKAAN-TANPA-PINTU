@@ -29,8 +29,7 @@
 :root{--bg:#0a0a0d;--card:#17171e;--card2:#1e1e28;--gold:#f5c16c;--text:#e8e6e3;--muted:#9a9a9e;--line:#2a2a36}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia, 'Times New Roman', serif;line-height:1.9;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 30%, rgba(245,193,108,.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 70%, rgba(125,211,255,.06) 0%, transparent 60%);animation:bgMove 16s ease-in-out infinite alternate}
-@keyframes bgMove{0%{transform:scale(1)}100%{transform:scale(1.1)}}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 30%, rgba(245,193,108,.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 70%, rgba(125,211,255,.06) 0%, transparent 60%)}
 .nav{max-width:800px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .nav a{color:var(--gold);text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:9px;background:var(--card2);font-size:.85rem;transition:.2s}
 .nav a:hover{border-color:var(--gold);transform:translateY(-1px)}
