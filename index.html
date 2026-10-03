@@ -11,4 +11,258 @@
   <a class="ptp-footer-link" href="yang-pernah-menjaga.html">Lihat jejak mereka →</a>
   <div class="ptp-footer-line"></div>
   <div class="ptp-footer-year">Perpustakaan Tanpa Pintu • 2026</div>
-</footer><script>const FALLBACK={"project":"PERPUSTAKAAN TANPA PINTU","seasons":[{"id":1,"title":"Sebelum Semuanya Terulang","desc":"Season 1 — 3 Bab | Final","visible":true,"babs":[{"no":"01","slug":"season-1-bab-01","judul":"Yang Tak Seharusnya Terucap","status":"ready"},{"no":"02","slug":"season-1-bab-02","judul":"Yang Tiada Ujung","status":"ready"},{"no":"03","slug":"season-1-bab-03","judul":"Hari Ini, Sekarang, Baru Saja","status":"ready"}]},{"id":2,"title":"Pintu Yang Pulang","desc":"Season 2 — 3 Bab | Percobaan Animasi","visible":true,"babs":[{"no":"01","slug":"season-2-bab-01","judul":"Noda Yang Tidak Mau Luntur","status":"ready"},{"no":"02","slug":"season-2-bab-02","judul":"Penghuni Yang Lupa Nama","status":"ready"},{"no":"03","slug":"season-2-bab-03","judul":"Perpustakaan Tanpa Luar","status":"ready"}]},{"id":3,"title":"Tagihan Iterasi","desc":"Season 3 — 6 Bab | Final","visible":true,"babs":[{"no":"01","slug":"season-3-bab-01","judul":"Bau Tanah Dan Aroma Ibu","status":"ready"},{"no":"02","slug":"season-3-bab-02","judul":"Tamu Dari Desa Sebelah","status":"ready"},{"no":"03","slug":"season-3-bab-03","judul":"Hitungan Yang Tidak Selesai","status":"ready"},{"no":"04","slug":"season-3-bab-04","judul":"Yang Disembunyikan Ibu","status":"ready"},{"no":"05","slug":"season-3-bab-05","judul":"Yang Menagih Di Ambang Pintu","status":"ready"},{"no":"06","slug":"season-3-bab-06","judul":"Yang Menunggu Di Balik Pintu","status":"ready"}]}],"gallery":{"title":"ARSIP VISUAL","desc":"Koleksi visual Perpustakaan Tanpa Pintu.","images":[{"file":"01.jpg","label":"01.jpg - Pintu Pertama"},{"file":"02.jpg","label":"02.jpg - Lorong"},{"file":"03.jpg","label":"03.jpg - Rak Hitam"},{"file":"04.jpg","label":"04.jpg - Serigala Penjaga"},{"file":"05.jpg","label":"05.jpg - Kertas Melayang"},{"file":"06.jpg","label":"06.jpg - Slot 06 Coming Soon","status":"coming"},{"file":"07.jpg","label":"07.jpg - Slot 07 Coming Soon","status":"coming"},{"file":"08.jpg","label":"08.jpg - Slot 08 Coming Soon","status":"coming"},{"file":"09.jpg","label":"09.jpg - Slot 09 Coming Soon","status":"coming"},{"file":"10.jpg","label":"10.jpg - Slot 10 Coming Soon","status":"coming"},{"file":"cover.jpg","label":"cover.jpg"}]}};function render(data){const nav=document.getElementById('navgrid'),seasons=document.getElementById('seasons');nav.innerHTML='';seasons.innerHTML='';const visible=(data.seasons||[]).filter(s=>s.visible!==false);visible.forEach((s,i)=>{const babs=s.babs||[];nav.innerHTML+=`<a class="nav-card" href="#season${s.id}"><strong>📖 SEASON ${s.id}</strong><span>${s.title} • ${babs.length} bab</span></a>`;let grid='';babs.forEach(b=>{const ready=b.status==='ready',cls=ready?'bab':'bab coming',slug=b.slug||`season-${s.id}-bab-${b.no}`;grid+=ready?`<a class="${cls}" href="${slug}.html">Bab ${b.no} - ${b.judul}</a>`:`<div class="${cls}">Bab ${b.no} - ${b.judul}</div>`});seasons.innerHTML+=`<section class="season" id="season${s.id}" style="animation-delay:${i*.08}s"><h2>SEASON ${s.id} - ${s.title}</h2><p class="desc">${s.desc||''}</p><div class="bab-grid">${grid}</div></section>`})}async function init(){try{const r=await fetch('./data.json?v='+Date.now());if(!r.ok)throw new Error(r.status);render(await r.json())}catch(e){console.warn('data.json gagal dimuat, memakai fallback.',e);render(FALLBACK)}}init();</script></body></html>
+</footer><script>const FALLBACK={
+  "project": "PERPUSTAKAAN TANPA PINTU",
+  "seasons": [
+    {
+      "id": 1,
+      "title": "Sebelum Semuanya Terulang",
+      "desc": "Season 1 — 3 Bab | Final",
+      "visible": true,
+      "babs": [
+        {
+          "no": "01",
+          "slug": "season-1-bab-01",
+          "judul": "Yang Tak Seharusnya Terucap",
+          "status": "ready"
+        },
+        {
+          "no": "02",
+          "slug": "season-1-bab-02",
+          "judul": "Yang Tiada Ujung",
+          "status": "ready"
+        },
+        {
+          "no": "03",
+          "slug": "season-1-bab-03",
+          "judul": "Hari Ini, Sekarang, Baru Saja",
+          "status": "ready"
+        }
+      ],
+      "editable_by": "Fina"
+    },
+    {
+      "id": 2,
+      "title": "Pintu Yang Pulang",
+      "desc": "Season 2 — 9 Bab | Final",
+      "visible": true,
+      "babs": [
+        {
+          "no": "01",
+          "slug": "season-2-bab-01",
+          "judul": "Noda Yang Tidak Mau Luntur",
+          "status": "ready"
+        },
+        {
+          "no": "02",
+          "slug": "season-2-bab-02",
+          "judul": "Penghuni Yang Lupa Nama",
+          "status": "ready"
+        },
+        {
+          "no": "03",
+          "slug": "season-2-bab-03",
+          "judul": "Perpustakaan Tanpa Luar",
+          "status": "ready"
+        },
+        {
+          "no": "04",
+          "slug": "season-2-bab-04",
+          "judul": "Bayangan Di Ujung Lorong",
+          "status": "ready"
+        },
+        {
+          "no": "05",
+          "slug": "season-2-bab-05",
+          "judul": "Yang Ingat Nama",
+          "status": "ready"
+        },
+        {
+          "no": "06",
+          "slug": "season-2-bab-06",
+          "judul": "Pasar Yang Lupa Cara Jualan",
+          "status": "ready"
+        },
+        {
+          "no": "07",
+          "slug": "season-2-bab-07",
+          "judul": "Harga Sebuah Ingatan",
+          "status": "ready"
+        },
+        {
+          "no": "08",
+          "slug": "season-2-bab-08",
+          "judul": "Tinta Yang Menagih Janji",
+          "status": "ready"
+        },
+        {
+          "no": "09",
+          "slug": "season-2-bab-09",
+          "judul": "Jalan Pulang Yang Lupa Arah",
+          "status": "ready"
+        }
+      ],
+      "editable_by": "Fina"
+    },
+    {
+      "id": 3,
+      "title": "Tagihan Iterasi",
+      "desc": "Season 3 — 6 Bab | Final",
+      "visible": true,
+      "babs": [
+        {
+          "no": "01",
+          "slug": "season-3-bab-01",
+          "judul": "Bau Tanah Dan Aroma Ibu",
+          "status": "ready"
+        },
+        {
+          "no": "02",
+          "slug": "season-3-bab-02",
+          "judul": "Tamu Dari Desa Sebelah",
+          "status": "ready"
+        },
+        {
+          "no": "03",
+          "slug": "season-3-bab-03",
+          "judul": "Hitungan Yang Tidak Selesai",
+          "status": "ready"
+        },
+        {
+          "no": "04",
+          "slug": "season-3-bab-04",
+          "judul": "Yang Disembunyikan Ibu",
+          "status": "ready"
+        },
+        {
+          "no": "05",
+          "slug": "season-3-bab-05",
+          "judul": "Yang Menagih Di Ambang Pintu",
+          "status": "ready"
+        },
+        {
+          "no": "06",
+          "slug": "season-3-bab-06",
+          "judul": "Yang Menunggu Di Balik Pintu",
+          "status": "ready"
+        }
+      ],
+      "editable_by": "Fina"
+    },
+    {
+      "id": 4,
+      "title": "Gelang Yang Mengingat",
+      "desc": "Season 4 — 12 Bab | Dalam Pengembangan",
+      "visible": true,
+      "babs": [
+        {
+          "no": "01",
+          "judul": "SUARA YANG MENUNGGU",
+          "status": "coming"
+        },
+        {
+          "no": "02",
+          "judul": "DI UJUNG PENCARIAN",
+          "status": "coming"
+        },
+        {
+          "no": "03",
+          "judul": "YANG TERSISA DI GUDANG",
+          "status": "coming"
+        },
+        {
+          "no": "04",
+          "judul": "SUARA DARI DALAM",
+          "status": "coming"
+        },
+        {
+          "no": "05",
+          "judul": "SUARA YANG TAHU NAMAKU",
+          "status": "coming"
+        },
+        {
+          "no": "06",
+          "judul": "JANGAN PULANG DULU",
+          "status": "coming"
+        },
+        {
+          "no": "07",
+          "judul": "YANG TIDAK PERNAH HILANG",
+          "status": "coming"
+        },
+        {
+          "no": "08",
+          "judul": "PERMAINAN YANG SUDAH PERNAH DIMENANGKAN",
+          "status": "coming"
+        },
+        {
+          "no": "09",
+          "judul": "YANG PERNAH DIBUKA",
+          "status": "coming"
+        },
+        {
+          "no": "10",
+          "judul": "YANG TERTINGGAL",
+          "status": "coming"
+        },
+        {
+          "no": "11",
+          "judul": "YANG SUDAH DITULIS",
+          "status": "coming"
+        },
+        {
+          "no": "12",
+          "judul": "PULANG",
+          "status": "coming"
+        }
+      ],
+      "editable_by": "Fina"
+    }
+  ],
+  "gallery": {
+    "title": "ARSIP VISUAL",
+    "desc": "Koleksi visual Perpustakaan Tanpa Pintu.",
+    "images": [
+      {
+        "file": "01.jpg",
+        "label": "01.jpg - Pintu Pertama"
+      },
+      {
+        "file": "02.jpg",
+        "label": "02.jpg - Lorong"
+      },
+      {
+        "file": "03.jpg",
+        "label": "03.jpg - Rak Hitam"
+      },
+      {
+        "file": "04.jpg",
+        "label": "04.jpg - Serigala Penjaga"
+      },
+      {
+        "file": "05.jpg",
+        "label": "05.jpg - Kertas Melayang"
+      },
+      {
+        "file": "cover.jpg",
+        "label": "cover.jpg"
+      },
+      {
+        "file": "season-1.jpg",
+        "label": "Season 1 - PERPUSTAKAAN TANPA PINTU"
+      },
+      {
+        "file": "season-2.jpg",
+        "label": "Season 2 - PINTU YANG PULANG"
+      },
+      {
+        "file": "season-3.jpg",
+        "label": "Season 3 - TAGIHAN ITERASI"
+      },
+      {
+        "file": "season-4.jpg",
+        "label": "Season 4 - GELANG YANG MENGINGAT"
+      }
+    ]
+  }
+};function render(data){const nav=document.getElementById('navgrid'),seasons=document.getElementById('seasons');nav.innerHTML='';seasons.innerHTML='';const visible=(data.seasons||[]).filter(s=>s.visible!==false);visible.forEach((s,i)=>{const babs=s.babs||[];nav.innerHTML+=`<a class="nav-card" href="#season${s.id}"><strong>📖 SEASON ${s.id}</strong><span>${s.title} • ${babs.length} bab</span></a>`;let grid='';babs.forEach(b=>{const ready=b.status==='ready',cls=ready?'bab':'bab coming',slug=b.slug||`season-${s.id}-bab-${b.no}`;grid+=ready?`<a class="${cls}" href="${slug}.html">Bab ${b.no} - ${b.judul}</a>`:`<div class="${cls}">Bab ${b.no} - ${b.judul}</div>`});seasons.innerHTML+=`<section class="season" id="season${s.id}" style="animation-delay:${i*.08}s"><h2>SEASON ${s.id} - ${s.title}</h2><p class="desc">${s.desc||''}</p><div class="bab-grid">${grid}</div></section>`})}async function init(){try{const r=await fetch('./data.json?v='+Date.now());if(!r.ok)throw new Error(r.status);render(await r.json())}catch(e){console.warn('data.json gagal dimuat, memakai fallback.',e);render(FALLBACK)}}init();</script></body></html>
