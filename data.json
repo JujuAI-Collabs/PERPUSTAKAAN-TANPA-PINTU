@@ -144,13 +144,15 @@
       "babs": [
         {
           "no": "01",
+          "slug": "season-4-bab-01",
           "judul": "SUARA YANG MENUNGGU",
-          "status": "coming"
+          "status": "ready"
         },
         {
           "no": "02",
+          "slug": "season-4-bab-02",
           "judul": "DI UJUNG PENCARIAN",
-          "status": "coming"
+          "status": "ready"
         },
         {
           "no": "03",
