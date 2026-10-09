@@ -139,24 +139,24 @@
     {
       "id": 4,
       "title": "Gelang Yang Mengingat",
-      "desc": "Season 4 — 12 Bab | Dalam Pengembangan",
+      "desc": "Season 4 — 11 Bab | Tamat",
       "visible": true,
       "babs": [
         {
           "no": "01",
-          "slug": "season-4-bab-01",
           "judul": "SUARA YANG MENUNGGU",
-          "status": "ready"
+          "status": "ready",
+          "slug": "season-4-bab-01"
         },
         {
           "no": "02",
-          "slug": "season-4-bab-02",
           "judul": "DI UJUNG PENCARIAN",
-          "status": "ready"
+          "status": "ready",
+          "slug": "season-4-bab-02"
         },
         {
           "no": "03",
-          "judul": "YANG TERSISA DI GUDANG",
+          "judul": "ANGKA YANG TERLUPAKAN",
           "status": "coming"
         },
         {
@@ -166,42 +166,37 @@
         },
         {
           "no": "05",
-          "judul": "SUARA YANG TAHU NAMAKU",
+          "judul": "TERLALU LAMA MENUNGGU",
           "status": "coming"
         },
         {
           "no": "06",
-          "judul": "COMING SOON",
+          "judul": "SESUATU YANG TERBANGUN",
           "status": "coming"
         },
         {
           "no": "07",
-          "judul": "COMING SOON",
+          "judul": "JUJUNYA SUDAH KEMBALI",
           "status": "coming"
         },
         {
           "no": "08",
-          "judul": "COMING SOON",
+          "judul": "TARUHAN",
           "status": "coming"
         },
         {
           "no": "09",
-          "judul": "COMING SOON",
+          "judul": "YANG SELALU KEMBALI",
           "status": "coming"
         },
         {
           "no": "10",
-          "judul": "COMING SOON",
+          "judul": "YANG TERTINGGAL",
           "status": "coming"
         },
         {
           "no": "11",
-          "judul": "COMING SOON",
-          "status": "coming"
-        },
-        {
-          "no": "12",
-          "judul": "COMING SOON",
+          "judul": "YANG SUDAH DITULIS",
           "status": "coming"
         }
       ],
