@@ -17,10 +17,10 @@ h1{color:var(--gold);font-size:1.45rem;letter-spacing:.8px;margin:0 0 28px;text-
 p{margin:0 0 1.35em;line-height:1.95;font-size:1.02rem;text-indent:.8em}
 .end{text-align:center;margin:38px 0 18px;padding:18px;border-top:1px dashed rgba(245,193,108,.25);color:var(--gold);letter-spacing:3px;font-weight:bold}
 @media(max-width:600px){article{padding:20px 18px}p{font-size:1rem;line-height:1.85}h1{font-size:1.25rem}}
-</style>
+.ptp-ripple{position:fixed;width:28px;height:28px;border:1px solid rgba(245,193,108,.55);border-radius:50%;pointer-events:none;z-index:30;transform:translate(-50%,-50%) scale(.25);animation:ptpRipple .8s ease-out forwards}.ptp-ripple::after{content:"";position:absolute;inset:5px;border:1px solid rgba(245,193,108,.28);border-radius:50%}@keyframes ptpRipple{to{transform:translate(-50%,-50%) scale(5);opacity:0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ptp-ripple{display:none}}</style>
 </head>
 <body>
-<div class="nav"><a href="index.html">← Daftar Isi</a><a href="season-4-bab-02.html" >Bab 02: DI UJUNG PENCARIAN →</a></div>
+<div class="nav"><a href="index.html">← Daftar Isi</a><a href="season-4-bab-02.html">Bab berikutnya →</a></div>
 <article>
 <div class="season">SEASON 4 • GELANG YANG MENGINGAT</div>
 <h1>BAB 1 — SUARA YANG MENUNGGU</h1>
@@ -71,7 +71,23 @@ p{margin:0 0 1.35em;line-height:1.95;font-size:1.02rem;text-indent:.8em}
 <p>Siapa perempuan yang sudah menungguku selama ini?</p>
 <div class="end">— BERSAMBUNG —</div>
 </article>
-<div class="nav"><a href="index.html">← Daftar Isi</a><a href="season-4-bab-02.html">Bab 02: DI UJUNG PENCARIAN →</a></div>
+<div class="nav"><a href="index.html">← Daftar Isi</a><a href="season-4-bab-02.html">Bab berikutnya →</a></div>
 <div style="text-align:center;padding:0 0 30px;color:var(--muted);font-size:.75rem">PERPUSTAKAAN TANPA PINTU • Season 4 • © 2026</div>
+<script>
+(function(){
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)');
+ addEventListener('pointerdown',function(e){
+  if(reduce.matches)return;
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  var r=document.createElement('span');
+  r.className='ptp-ripple';
+  r.style.left=e.clientX+'px';r.style.top=e.clientY+'px';
+  document.body.appendChild(r);
+  var rm=function(){r.remove()};
+  r.addEventListener('animationend',rm,{once:true});
+  setTimeout(rm,1000);
+ },{passive:true});
+})();
+</script>
 </body>
 </html>
