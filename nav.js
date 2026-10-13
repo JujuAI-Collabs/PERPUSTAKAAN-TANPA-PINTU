@@ -65,13 +65,13 @@
       }
 
       if (previous && previous.slug && previous.status === 'ready') {
-        addLink(previous.slug + '.html', '← Bab sebelumnya');
+        addLink(previous.slug + '.html', '←\u00a0Bab sebelumnya');
       }
 
       addLink('index.html#season' + season.id, 'Kembali ke Arsip / Daftar Isi');
 
       if (next && next.slug && next.status === 'ready') {
-        addLink(next.slug + '.html', 'Bab berikutnya →', 'next');
+        addLink(next.slug + '.html', 'Bab berikutnya\u00a0→', 'next');
       }
 
       oldNav.replaceWith(newNav);
