@@ -6,6 +6,7 @@
       "title": "Sebelum Semuanya Terulang",
       "desc": "Season 1 — 3 Bab | Final",
       "visible": true,
+      "cover": "img/cover-season-1.webp",
       "babs": [
         {
           "no": "01",
@@ -33,6 +34,7 @@
       "title": "Pintu Yang Pulang",
       "desc": "Season 2 — 9 Bab | Final",
       "visible": true,
+      "cover": "img/cover-season-2.webp",
       "babs": [
         {
           "no": "01",
@@ -96,6 +98,7 @@
       "title": "Tagihan Iterasi",
       "desc": "Season 3 — 6 Bab | Final",
       "visible": true,
+      "cover": "img/cover-season-3.webp",
       "babs": [
         {
           "no": "01",
@@ -141,6 +144,7 @@
       "title": "Gelang Yang Mengingat",
       "desc": "Season 4 — 11 Bab | Tamat",
       "visible": true,
+      "cover": "img/cover-season-4.webp",
       "babs": [
         {
           "no": "01",
